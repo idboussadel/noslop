@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/logo.webp" alt="noslopcode logo" width="96" />
+<img src="assets/logo.webp" alt="no slop" width="220" />
 
-# noslopcode
+<br />
 
 [![version](https://img.shields.io/badge/VERSION-0.1.0-f97316?style=for-the-badge&labelColor=18181b)](https://github.com/noslopcode/noslopcode)
 [![license](https://img.shields.io/badge/LICENSE-MIT-22c55e?style=for-the-badge&labelColor=18181b)](https://github.com/noslopcode/noslopcode/blob/main/Cargo.toml)
