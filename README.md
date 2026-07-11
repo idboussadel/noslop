@@ -21,7 +21,7 @@
 
 ## What it does
 
-`noslop` walks your repo, builds an import graph across **TypeScript/JavaScript and Python**, and tells you what is actually dead — files nobody reaches, exports nobody imports, dependencies nobody uses, cycles that will bite you later.
+`noslop` walks your repo — **monorepos and workspaces included** — builds an import graph across **TypeScript/JavaScript and Python**, and tells you what is actually dead: files nobody reaches, exports nobody imports, dependencies nobody uses, cycles that will bite you later.
 
 Unlike linters that check syntax, noslop answers **reachability**: _is this code part of the live system?_
 
