@@ -1,0 +1,25 @@
+name = "hardhat"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "hardhat"
+
+[[entry_points]]
+glob = "test/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "scripts/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "tasks/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "deploy/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "ignition/modules/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "hardhat.config.{ts,js,cjs,mjs}"
+
+tooling_dependencies = ["hardhat", "@nomicfoundation/hardhat-toolbox", "@nomicfoundation/hardhat-verify", "@nomicfoundation/hardhat-ethers", "@nomicfoundation/hardhat-chai-matchers", "@nomicfoundation/hardhat-network-helpers", "@nomicfoundation/hardhat-ignition", "@nomicfoundation/hardhat-ignition-ethers", "@nomiclabs/hardhat-waffle", "@nomiclabs/hardhat-ethers", "@nomiclabs/hardhat-etherscan", "@typechain/hardhat", "hardhat-gas-reporter", "hardhat-deploy", "hardhat-contract-sizer", "solidity-coverage", "solidity-docgen"]

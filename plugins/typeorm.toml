@@ -1,0 +1,52 @@
+name = "typeorm"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "typeorm"
+
+[[entry_points]]
+glob = "src/entity/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "src/entities/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "src/migration/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "src/migrations/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "src/subscriber/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "src/subscribers/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "entity/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "entities/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "migration/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "migrations/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "subscriber/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "subscribers/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "ormconfig.{json,js,ts,yml,yaml}"
+
+[[config_patterns]]
+glob = "data-source.{ts,js}"
+
+[[config_patterns]]
+glob = "src/data-source.{ts,js}"
+
+tooling_dependencies = ["typeorm"]

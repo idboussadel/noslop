@@ -1,0 +1,7 @@
+schema = 1
+
+[policy]
+packs = ["policy/team.toml"]
+
+[boundaries]
+preset = "layered"

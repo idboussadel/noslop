@@ -1,0 +1,10 @@
+name = "rolldown"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "rolldown"
+
+[[config_patterns]]
+glob = "rolldown.config.{js,cjs,mjs,ts,mts,cts}"
+
+tooling_dependencies = ["rolldown", "@rolldown/pluginutils"]

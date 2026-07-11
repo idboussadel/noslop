@@ -1,0 +1,28 @@
+name = "react-router"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@react-router/dev"
+
+[[entry_points]]
+glob = "app/routes/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/root.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/entry.client.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/entry.server.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "react-router.config.{ts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "app/routes.{ts,js,mts,mjs}"
+
+[[config_patterns]]
+glob = "src/routes.{ts,js,mts,mjs}"
+
+tooling_dependencies = ["@react-router/dev", "@react-router/serve", "@react-router/node"]

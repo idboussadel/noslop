@@ -1,0 +1,24 @@
+name = "electron"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "electron" },
+  { dependency = "electron-builder" },
+  { dependency = "@electron-forge/cli" },
+  { dependency = "electron-vite" },
+]
+
+[[entry_points]]
+glob = "src/main/**/*.{ts,tsx,js,jsx,mts,mjs}"
+
+[[entry_points]]
+glob = "src/preload/**/*.{ts,tsx,js,jsx,mts,mjs}"
+
+[[entry_points]]
+glob = "electron/main.{ts,js}"
+
+[[config_patterns]]
+glob = "electron.vite.config.{ts,js,mjs}"
+
+tooling_dependencies = ["electron", "electron-builder", "electron-vite", "@electron/rebuild", "@electron-forge/cli"]

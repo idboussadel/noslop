@@ -1,0 +1,21 @@
+name = "eslint"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "eslint" },
+  { dependency = "@eslint/js" },
+  { file_exists = "eslint.config.js" },
+  { file_exists = "eslint.config.mjs" },
+  { file_exists = "eslint.config.ts" },
+  { file_exists = ".eslintrc.js" },
+  { file_exists = ".eslintrc.json" },
+]
+
+[[config_patterns]]
+glob = "eslint.config.{js,mjs,cjs,ts,mts,cts}"
+
+[[config_patterns]]
+glob = ".eslintrc.{js,cjs,mjs,json,yaml,yml}"
+
+tooling_dependencies = ["eslint"]

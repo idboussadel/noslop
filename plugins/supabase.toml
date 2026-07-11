@@ -1,0 +1,16 @@
+name = "supabase"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "supabase" },
+  { file_exists = "supabase/config.toml" },
+]
+
+[[entry_points]]
+glob = "supabase/functions/*/index.{ts,js,mts,mjs}"
+
+[[entry_points]]
+glob = "supabase/functions/*/index.{ts,tsx,js,jsx,mts,mjs,cts,cjs}"
+
+tooling_dependencies = ["supabase"]

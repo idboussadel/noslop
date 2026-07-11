@@ -1,0 +1,8 @@
+name = "redwoodsdk"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "rwsdk"
+
+[[entry_points]]
+glob = "src/worker.{ts,tsx,js,jsx,mts,mjs}"

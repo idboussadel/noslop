@@ -1,0 +1,10 @@
+name = "pandacss"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@pandacss/dev"
+
+[[config_patterns]]
+glob = "panda.config.{ts,js,mjs,cjs}"
+
+tooling_dependencies = ["@pandacss/dev", "@pandacss/studio", "@pandacss/eslint-plugin"]

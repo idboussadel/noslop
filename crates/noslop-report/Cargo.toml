@@ -1,0 +1,11 @@
+[package]
+name = "noslop-report"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+noslop-graph = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+owo-colors = { workspace = true }

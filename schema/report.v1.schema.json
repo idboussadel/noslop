@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://noslopcode.dev/schema/report.v1.schema.json",
+  "title": "noslop report",
+  "description": "Versioned output contract for `noslop --format json`. Agents and CI integrations couple to this; a breaking change bumps schema_version.",
+  "type": "object",
+  "required": ["schema_version", "tool_version", "repo", "scan_roots", "metrics", "health", "findings", "suppressed_count"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "tool_version": { "type": "string" },
+    "repo": { "type": "string" },
+    "scan_roots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["package", "root", "language", "plugins", "files", "entry_points"],
+        "additionalProperties": false,
+        "properties": {
+          "package": { "type": "string" },
+          "root": { "type": "string" },
+          "language": { "type": "string", "enum": ["typescript", "javascript", "python", "css"] },
+          "plugins": { "type": "array", "items": { "type": "string" } },
+          "files": { "type": "integer", "minimum": 0 },
+          "entry_points": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["files", "dead_files", "dead_file_pct", "dead_exports", "unused_imports", "cycles", "unused_dependencies", "only_used_in_tests"],
+      "properties": {
+        "files": { "type": "integer" },
+        "dead_files": { "type": "integer" },
+        "dead_file_pct": { "type": "number" },
+        "dead_exports": { "type": "integer" },
+        "unused_types": { "type": "integer" },
+        "unused_imports": { "type": "integer" },
+        "unused_enum_members": { "type": "integer" },
+        "unused_class_members": { "type": "integer" },
+        "unused_parameters": { "type": "integer" },
+        "cycles": { "type": "integer" },
+        "unused_dependencies": { "type": "integer" },
+        "only_used_in_tests": { "type": "integer" },
+        "high_complexity": { "type": "integer" },
+        "large_functions": { "type": "integer" },
+        "duplicate_code": { "type": "integer" },
+        "duplication_pct": { "type": ["number", "null"] },
+        "grade": { "type": ["string", "null"] }
+      }
+    },
+    "health": {
+      "type": "object",
+      "required": ["score", "grade", "formula_version", "components", "refactor_targets"],
+      "additionalProperties": false,
+      "properties": {
+        "score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "grade": { "type": "string", "enum": ["A", "B", "C", "D", "F"] },
+        "formula_version": { "type": "integer", "minimum": 1 },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "score", "penalty", "findings"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "score": { "type": "number", "minimum": 0, "maximum": 100 },
+              "penalty": { "type": "number", "minimum": 0 },
+              "findings": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "refactor_targets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["rank", "path", "kind", "score", "payoff", "effort", "findings", "reasons"],
+            "additionalProperties": false,
+            "properties": {
+              "rank": { "type": "integer", "minimum": 1 },
+              "path": { "type": "string" },
+              "kind": { "type": "string" },
+              "score": { "type": "number", "minimum": 0 },
+              "payoff": { "type": "number", "minimum": 0 },
+              "effort": { "type": "string", "enum": ["small", "medium", "large"] },
+              "findings": { "type": "integer", "minimum": 1 },
+              "reasons": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule", "severity", "confidence", "file", "span", "message", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "rule": {
+            "type": "string",
+            "enum": ["unused-file", "unused-export", "unused-type", "unused-import", "unused-dependency", "unused-enum-member", "unused-class-member", "unused-parameter", "expected-unused-but-used", "missing-suppression-reason", "high-complexity", "large-function", "banned-import", "banned-call", "banned-effect", "boundary-violation", "duplicate-code", "unused-css-token", "broken-css-reference", "unused-css-class", "circular-imports", "only-used-in-tests"]
+          },
+          "severity": { "type": "string", "enum": ["off", "warn", "error"] },
+          "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+          "symbol": { "type": "string", "description": "Stable id: <repo-relative-path>::<dotted symbol path>" },
+          "file": { "type": "string" },
+          "span": {
+            "type": "object",
+            "required": ["start_line", "end_line"],
+            "properties": {
+              "start_line": { "type": "integer", "minimum": 1 },
+              "end_line": { "type": "integer", "minimum": 1 }
+            }
+          },
+          "message": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "suppressed_count": { "type": "integer", "minimum": 0 }
+  }
+}

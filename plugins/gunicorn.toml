@@ -1,0 +1,14 @@
+name = "gunicorn"
+language = "python"
+
+[detect]
+dependency = "gunicorn"
+
+[[config_patterns]]
+glob = "gunicorn.conf.py"
+
+[[config_patterns]]
+glob = "**/gunicorn.conf.py"
+
+[[config_patterns]]
+glob = "gunicorn.conf.{py,toml}"

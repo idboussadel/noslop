@@ -1,0 +1,21 @@
+name = "pytest"
+language = "python"
+
+[detect]
+any = [
+  { dependency = "pytest" },
+  { file_exists = "pytest.ini" },
+  { file_exists = "conftest.py" },
+]
+
+[[test_patterns]]
+glob = "**/test_*.py"
+
+[[test_patterns]]
+glob = "**/*_test.py"
+
+[[test_patterns]]
+glob = "**/tests/**"
+
+[[config_patterns]]
+glob = "pytest.ini"

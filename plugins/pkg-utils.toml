@@ -1,0 +1,19 @@
+name = "pkg-utils"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@sanity/pkg-utils"
+
+[[config_patterns]]
+glob = "package.config.{ts,js,mts,mjs,cts,cjs}"
+
+[[config_patterns]]
+glob = "**/package.config.{ts,js,mts,mjs,cts,cjs}"
+
+[[config_patterns]]
+glob = "package.bundle.{ts,js,mts,mjs,cts,cjs}"
+
+[[config_patterns]]
+glob = "**/package.bundle.{ts,js,mts,mjs,cts,cjs}"
+
+tooling_dependencies = ["@sanity/pkg-utils"]

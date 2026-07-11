@@ -1,0 +1,10 @@
+name = "plop"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "plop"
+
+[[config_patterns]]
+glob = "plopfile.{js,cjs,mjs,ts}"
+
+tooling_dependencies = ["plop"]

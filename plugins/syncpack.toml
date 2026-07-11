@@ -1,0 +1,13 @@
+name = "syncpack"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "syncpack"
+
+[[config_patterns]]
+glob = ".syncpackrc"
+
+[[config_patterns]]
+glob = ".syncpackrc.{json,js,cjs}"
+
+tooling_dependencies = ["syncpack"]

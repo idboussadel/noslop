@@ -1,0 +1,8 @@
+[package]
+name = "noslop-resolve"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+noslop-graph = { workspace = true }

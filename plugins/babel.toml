@@ -1,0 +1,16 @@
+name = "babel"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@babel/core"
+
+[[config_patterns]]
+glob = "babel.config.{js,cjs,mjs,ts,cts}"
+
+[[config_patterns]]
+glob = ".babelrc"
+
+[[config_patterns]]
+glob = ".babelrc.{js,cjs,mjs,json}"
+
+tooling_dependencies = ["@babel/core", "@babel/cli", "@babel/runtime"]

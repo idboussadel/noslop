@@ -1,0 +1,25 @@
+name = "vitepress"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "vitepress"
+
+[[entry_points]]
+glob = ".vitepress/theme/index.{ts,js,mts,mjs}"
+
+[[entry_points]]
+glob = ".vitepress/theme/**/*.{vue,ts,js,mts,mjs}"
+
+[[entry_points]]
+glob = "docs/.vitepress/theme/index.{ts,js,mts,mjs}"
+
+[[entry_points]]
+glob = "docs/.vitepress/theme/**/*.{vue,ts,js,mts,mjs}"
+
+[[config_patterns]]
+glob = ".vitepress/config.{ts,js,mts,mjs}"
+
+[[config_patterns]]
+glob = "docs/.vitepress/config.{ts,js,mts,mjs}"
+
+tooling_dependencies = ["vitepress"]

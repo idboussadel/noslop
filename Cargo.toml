@@ -1,0 +1,44 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/noslopcode/noslopcode"
+rust-version = "1.80"
+
+[workspace.dependencies]
+# Internal crates
+noslop-graph = { path = "crates/noslop-graph" }
+noslop-extract = { path = "crates/noslop-extract" }
+noslop-discover = { path = "crates/noslop-discover" }
+noslop-resolve = { path = "crates/noslop-resolve" }
+noslop-passes = { path = "crates/noslop-passes" }
+noslop-report = { path = "crates/noslop-report" }
+noslop-core = { path = "crates/noslop-core" }
+
+# Third-party
+anyhow = "1"
+thiserror = "1"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+ignore = "0.4"
+globset = "0.4"
+rayon = "1"
+petgraph = "0.6"
+owo-colors = "4"
+xxhash-rust = { version = "0.8", features = ["xxh3"] }
+tree-sitter = "0.24"
+tree-sitter-typescript = "0.23"
+tree-sitter-python = "0.23"
+tree-sitter-css = "0.23"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"

@@ -1,0 +1,16 @@
+name = "parcel"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "parcel" },
+  { dependency = "@parcel/" },
+]
+
+[[entry_points]]
+glob = "index.html"
+
+[[config_patterns]]
+glob = ".parcelrc"
+
+tooling_dependencies = ["parcel"]

@@ -1,0 +1,15 @@
+name = "flask"
+language = "python"
+route_decorators = ["route", "get", "post", "put", "delete"]
+
+[detect]
+dependency = "flask"
+
+[[entry_points]]
+glob = "**/app.py"
+
+[[entry_points]]
+glob = "**/wsgi.py"
+
+[[entry_points]]
+glob = "**/main.py"

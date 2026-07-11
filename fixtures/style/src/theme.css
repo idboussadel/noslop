@@ -1,0 +1,16 @@
+:root {
+  --brand: #3366ff;
+  --dead-token: #ff0000;
+}
+
+.card {
+  color: var(--brand);
+}
+
+.ghost {
+  display: none;
+}
+
+.broken {
+  color: var(--missing);
+}

@@ -1,0 +1,39 @@
+name = "i18next"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "i18next" },
+  { dependency = "react-i18next" },
+  { dependency = "vue-i18n" },
+  { dependency = "next-i18next" },
+]
+
+[[config_patterns]]
+glob = "src/i18n.{ts,js,mjs}"
+
+[[config_patterns]]
+glob = "src/i18n/index.{ts,js}"
+
+[[config_patterns]]
+glob = "i18n.{ts,js,mjs}"
+
+[[config_patterns]]
+glob = "i18n/index.{ts,js}"
+
+[[config_patterns]]
+glob = "i18next.config.{js,ts,mjs}"
+
+[[config_patterns]]
+glob = "next-i18next.config.{js,mjs}"
+
+[[config_patterns]]
+glob = "locales/**/*.json"
+
+[[config_patterns]]
+glob = "public/locales/**/*.json"
+
+[[config_patterns]]
+glob = "src/locales/**/*.json"
+
+tooling_dependencies = ["i18next", "react-i18next", "vue-i18n", "next-i18next", "i18next-parser", "i18next-scanner"]

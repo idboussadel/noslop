@@ -1,0 +1,10 @@
+name = "husky"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "husky"
+
+[[config_patterns]]
+glob = ".husky/**/*"
+
+tooling_dependencies = ["husky"]

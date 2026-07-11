@@ -1,0 +1,19 @@
+[package]
+name = "noslop-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+noslop-graph = { workspace = true }
+noslop-discover = { workspace = true }
+noslop-extract = { workspace = true }
+noslop-resolve = { workspace = true }
+noslop-passes = { workspace = true }
+noslop-report = { workspace = true }
+rayon = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }
+globset = { workspace = true }
+anyhow = { workspace = true }

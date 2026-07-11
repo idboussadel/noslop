@@ -1,0 +1,11 @@
+name = "express"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "express"
+
+[[entry_points]]
+glob = "src/{index,app,server}.{ts,js}"
+
+[[entry_points]]
+glob = "{index,app,server}.{ts,js}"

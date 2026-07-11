@@ -1,0 +1,25 @@
+name = "mocha"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "mocha"
+
+[[entry_points]]
+glob = "test/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "tests/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "spec/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "**/*.test.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "**/*.spec.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = ".mocharc.{json,yaml,yml,js,cjs,mjs}"
+
+tooling_dependencies = ["mocha", "@types/mocha", "ts-mocha"]

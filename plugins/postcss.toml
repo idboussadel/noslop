@@ -1,0 +1,10 @@
+name = "postcss"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "postcss"
+
+[[config_patterns]]
+glob = "postcss.config.{ts,js,cjs,mjs}"
+
+tooling_dependencies = ["postcss", "postcss-cli"]

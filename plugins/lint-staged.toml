@@ -1,0 +1,13 @@
+name = "lint-staged"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "lint-staged"
+
+[[config_patterns]]
+glob = "lint-staged.config.{js,cjs,mjs,ts}"
+
+[[config_patterns]]
+glob = ".lintstagedrc.{js,cjs,mjs,ts}"
+
+tooling_dependencies = ["lint-staged"]

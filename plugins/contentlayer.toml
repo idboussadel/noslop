@@ -1,0 +1,15 @@
+name = "contentlayer"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "contentlayer" },
+  { dependency = "contentlayer2" },
+  { dependency = "next-contentlayer" },
+  { dependency = "next-contentlayer2" },
+  { file_exists = "contentlayer.config.ts" },
+  { file_exists = "contentlayer.config.js" },
+]
+
+[[config_patterns]]
+glob = "contentlayer.config.{ts,js,mts,mjs}"

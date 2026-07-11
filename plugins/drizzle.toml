@@ -1,0 +1,13 @@
+name = "drizzle"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "drizzle-orm"
+
+[[entry_points]]
+glob = "drizzle/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "drizzle.config.{ts,js,mjs}"
+
+tooling_dependencies = ["drizzle-orm", "drizzle-kit"]

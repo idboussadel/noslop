@@ -1,0 +1,13 @@
+name = "commitlint"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@commitlint/cli"
+
+[[config_patterns]]
+glob = "commitlint.config.{js,cjs,mjs,ts}"
+
+[[config_patterns]]
+glob = ".commitlintrc.{js,cjs}"
+
+tooling_dependencies = ["@commitlint/cli", "@commitlint/config-conventional", "@commitlint/config-angular"]

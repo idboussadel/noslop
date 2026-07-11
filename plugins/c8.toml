@@ -1,0 +1,13 @@
+name = "c8"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "c8"
+
+[[config_patterns]]
+glob = ".c8rc"
+
+[[config_patterns]]
+glob = ".c8rc.json"
+
+tooling_dependencies = ["c8"]

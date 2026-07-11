@@ -1,0 +1,12 @@
+name = "celery"
+language = "python"
+route_decorators = ["task", "shared_task"]
+
+[detect]
+dependency = "celery"
+
+[[entry_points]]
+glob = "**/celery.py"
+
+[[entry_points]]
+glob = "**/tasks.py"

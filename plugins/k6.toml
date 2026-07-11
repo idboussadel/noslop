@@ -1,0 +1,16 @@
+name = "k6"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "k6"
+
+[[entry_points]]
+glob = "**/*.k6.{js,ts,mjs,cjs,mts,cts}"
+
+[[entry_points]]
+glob = "load/*.k6.{js,ts,mjs,cjs,mts,cts}"
+
+[[test_patterns]]
+glob = "**/*.k6.{js,ts,mjs,cjs,mts,cts}"
+
+tooling_dependencies = ["k6"]

@@ -1,0 +1,15 @@
+name = "fastapi"
+language = "python"
+route_decorators = ["get", "post", "put", "delete", "patch", "websocket", "route"]
+
+[detect]
+dependency = "fastapi"
+
+[[entry_points]]
+glob = "**/main.py"
+
+[[entry_points]]
+glob = "**/app.py"
+
+[[entry_points]]
+glob = "**/asgi.py"

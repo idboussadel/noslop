@@ -1,0 +1,22 @@
+name = "sanity"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "sanity" },
+  { dependency = "@sanity/" },
+]
+
+[[entry_points]]
+glob = "schemas/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "sanity/**/*.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "sanity.config.{ts,js}"
+
+[[config_patterns]]
+glob = "sanity.cli.{ts,js}"
+
+tooling_dependencies = ["sanity", "@sanity/client", "@sanity/vision", "@sanity/cli"]

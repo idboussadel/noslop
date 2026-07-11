@@ -1,0 +1,28 @@
+name = "prisma"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "prisma" },
+  { dependency = "@prisma/client" },
+]
+
+[[entry_points]]
+glob = "prisma/seed.{ts,js}"
+
+[[config_patterns]]
+glob = "prisma.config.{ts,mts,cts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = ".config/prisma.{ts,mts,cts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "prisma/schema.prisma"
+
+[[config_patterns]]
+glob = "schema.prisma"
+
+[[config_patterns]]
+glob = "prisma/schema/*.prisma"
+
+tooling_dependencies = ["prisma", "@prisma/client"]

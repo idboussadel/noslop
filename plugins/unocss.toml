@@ -1,0 +1,16 @@
+name = "unocss"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "unocss" },
+  { dependency = "@unocss/" },
+]
+
+[[config_patterns]]
+glob = "uno.config.{ts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "unocss.config.{ts,js,mjs,cjs}"
+
+tooling_dependencies = ["unocss", "@unocss/cli", "@unocss/postcss", "@unocss/vite", "@unocss/webpack", "@unocss/astro", "@unocss/nuxt", "@unocss/svelte-scoped", "@unocss/eslint-plugin", "@unocss/eslint-config", "@unocss/reset"]

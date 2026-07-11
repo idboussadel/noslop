@@ -1,0 +1,22 @@
+name = "webdriverio"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "webdriverio" },
+  { dependency = "@wdio/" },
+]
+
+[[entry_points]]
+glob = "test/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "e2e/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "**/*.e2e.{ts,js}"
+
+[[config_patterns]]
+glob = "wdio.conf.{ts,js}"
+
+tooling_dependencies = ["webdriverio"]

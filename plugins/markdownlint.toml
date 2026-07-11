@@ -1,0 +1,17 @@
+name = "markdownlint"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "markdownlint" },
+  { dependency = "markdownlint-cli" },
+  { dependency = "markdownlint-cli2" },
+]
+
+[[config_patterns]]
+glob = ".markdownlint.{json,jsonc,yml,yaml}"
+
+[[config_patterns]]
+glob = ".markdownlint-cli2.{jsonc,yaml,cjs,mjs}"
+
+tooling_dependencies = ["markdownlint", "markdownlint-cli", "markdownlint-cli2"]

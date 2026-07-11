@@ -1,0 +1,10 @@
+name = "changesets"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@changesets/cli"
+
+[[config_patterns]]
+glob = ".changeset/config.json"
+
+tooling_dependencies = ["@changesets/cli", "@changesets/changelog-github", "@changesets/changelog-git"]

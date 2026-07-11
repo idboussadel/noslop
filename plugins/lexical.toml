@@ -1,0 +1,8 @@
+name = "lexical"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "lexical" },
+  { dependency = "@lexical/" },
+]

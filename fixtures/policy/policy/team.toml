@@ -1,0 +1,22 @@
+schema = 1
+name = "team-policy"
+
+[[rule]]
+id = "no-moment"
+kind = "banned-import"
+specifiers = ["moment"]
+severity = "warn"
+hint = "use date-fns"
+
+[[rule]]
+id = "no-shell"
+kind = "banned-call"
+callees = ["child_process.*", "subprocess.*"]
+severity = "error"
+
+[[rule]]
+id = "no-net-in-domain"
+kind = "banned-effect"
+effects = ["network"]
+paths = ["src/domain/**"]
+severity = "error"

@@ -1,0 +1,19 @@
+name = "wrangler"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "wrangler"
+
+[[entry_points]]
+glob = "src/index.{ts,tsx,js,jsx,mts,mjs}"
+
+[[entry_points]]
+glob = "src/worker.{ts,tsx,js,jsx,mts,mjs}"
+
+[[entry_points]]
+glob = "functions/**/*.{ts,tsx,js,jsx,mts,mjs}"
+
+[[config_patterns]]
+glob = "wrangler.{toml,json,jsonc}"
+
+tooling_dependencies = ["wrangler", "@cloudflare/workers-types"]

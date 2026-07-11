@@ -1,0 +1,13 @@
+name = "graphql-codegen"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@graphql-codegen/cli"
+
+[[config_patterns]]
+glob = "codegen.{ts,js}"
+
+[[config_patterns]]
+glob = "graphql.config.{ts,js}"
+
+tooling_dependencies = ["@graphql-codegen/cli", "@graphql-codegen/typescript", "@graphql-codegen/typescript-operations", "@graphql-codegen/typescript-react-query"]

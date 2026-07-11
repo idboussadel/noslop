@@ -1,0 +1,88 @@
+name = "ember"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "ember-source" },
+  { dependency = "ember-cli" },
+  { dependency = "@embroider/core" },
+  { dependency = "@embroider/compat" },
+  { dependency = "@glimmer/component" },
+]
+
+[[entry_points]]
+glob = "app/app.{js,ts,gjs,gts}"
+
+[[entry_points]]
+glob = "app/router.{js,ts}"
+
+[[entry_points]]
+glob = "app/index.html"
+
+[[entry_points]]
+glob = "app/components/**/*.{js,ts,gjs,gts,hbs}"
+
+[[entry_points]]
+glob = "app/routes/**/*.{js,ts,gjs,gts}"
+
+[[entry_points]]
+glob = "app/controllers/**/*.{js,ts}"
+
+[[entry_points]]
+glob = "app/templates/**/*.{hbs,gjs,gts}"
+
+[[entry_points]]
+glob = "app/models/**/*.{js,ts}"
+
+[[entry_points]]
+glob = "app/services/**/*.{js,ts}"
+
+[[entry_points]]
+glob = "app/helpers/**/*.{js,ts,gjs,gts}"
+
+[[entry_points]]
+glob = "app/modifiers/**/*.{js,ts}"
+
+[[entry_points]]
+glob = "app/initializers/**/*.{js,ts}"
+
+[[entry_points]]
+glob = "app/instance-initializers/**/*.{js,ts}"
+
+[[entry_points]]
+glob = "app/adapters/**/*.{js,ts}"
+
+[[entry_points]]
+glob = "app/serializers/**/*.{js,ts}"
+
+[[entry_points]]
+glob = "app/transforms/**/*.{js,ts}"
+
+[[entry_points]]
+glob = "tests/test-helper.{js,ts}"
+
+[[entry_points]]
+glob = "tests/index.html"
+
+[[entry_points]]
+glob = "tests/**/*-test.{js,ts,gjs,gts}"
+
+[[entry_points]]
+glob = "config/environment.js"
+
+[[entry_points]]
+glob = "config/targets.js"
+
+[[entry_points]]
+glob = "config/optional-features.json"
+
+[[entry_points]]
+glob = "config/deprecation-workflow.js"
+
+[[entry_points]]
+glob = "ember-cli-build.js"
+
+[[entry_points]]
+glob = "testem.js"
+
+tooling_dependencies = ["ember-source", "ember-cli", "ember-cli-htmlbars", "ember-cli-babel", "ember-auto-import", "@embroider/core", "@glint/core", "@glint/environment-ember-loose", "@glint/environment-ember-template-imports", "ember-cli-test-loader", "ember-exam", "ember-template-lint", "ember-template-imports", "ember-source-channel-url", "@ember/optional-features", "ember-cli-dependency-checker", "ember-cli-inject-live-reload", "ember-cli-sri", "ember-cli-terser", "loader.js", "broccoli-asset-rev", "ember-cli-app-version", "ember-export-application-global", "@tsconfig/ember", "@glint/tsserver-plugin"]

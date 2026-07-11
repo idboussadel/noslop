@@ -1,0 +1,16 @@
+name = "nx"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "nx"
+
+[[config_patterns]]
+glob = "**/project.json"
+
+[[config_patterns]]
+glob = "nx.json"
+
+[[config_patterns]]
+glob = "project.json"
+
+tooling_dependencies = ["nx", "@nx/workspace", "@nx/js", "@nx/react", "@nx/next", "@nx/node", "@nx/web", "@nx/vite", "@nx/jest", "@nx/eslint", "@nx/angular", "@nx/storybook", "@nx/webpack", "@nx/cypress", "@nx/playwright", "@nx/rollup", "@nx/esbuild", "@nx/rspack", "@nx/express", "@nx/nest"]

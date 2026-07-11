@@ -1,0 +1,13 @@
+name = "typedoc"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "typedoc"
+
+[[config_patterns]]
+glob = "typedoc.{json,jsonc}"
+
+[[config_patterns]]
+glob = "typedoc.config.{js,cjs,mjs,ts}"
+
+tooling_dependencies = ["typedoc"]

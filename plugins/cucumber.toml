@@ -1,0 +1,28 @@
+name = "cucumber"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@cucumber/cucumber"
+
+[[entry_points]]
+glob = "features/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "**/*.steps.{ts,js}"
+
+[[entry_points]]
+glob = "step_definitions/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "support/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "cucumber.{js,cjs,mjs,ts}"
+
+[[config_patterns]]
+glob = "cucumber.config.{js,cjs,mjs,ts}"
+
+[[config_patterns]]
+glob = ".cucumber.{js,yml}"
+
+tooling_dependencies = ["@cucumber/cucumber"]

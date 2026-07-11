@@ -1,0 +1,36 @@
+name = "stryker"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@stryker-mutator/core" },
+  { dependency = "stryker" },
+  { file_exists = "stryker.conf.js" },
+  { file_exists = "stryker.config.mjs" },
+]
+
+[[config_patterns]]
+glob = "stryker.conf.{json,js,mjs,cjs,jsonc,ts}"
+
+[[config_patterns]]
+glob = "**/stryker.conf.{json,js,mjs,cjs,jsonc,ts}"
+
+[[config_patterns]]
+glob = ".stryker.conf.{json,js,mjs,cjs,jsonc,ts}"
+
+[[config_patterns]]
+glob = "**/.stryker.conf.{json,js,mjs,cjs,jsonc,ts}"
+
+[[config_patterns]]
+glob = "stryker.config.{json,js,mjs,cjs,jsonc,ts}"
+
+[[config_patterns]]
+glob = "**/stryker.config.{json,js,mjs,cjs,jsonc,ts}"
+
+[[config_patterns]]
+glob = ".stryker.config.{json,js,mjs,cjs,jsonc,ts}"
+
+[[config_patterns]]
+glob = "**/.stryker.config.{json,js,mjs,cjs,jsonc,ts}"
+
+tooling_dependencies = ["@stryker-mutator/core", "stryker"]

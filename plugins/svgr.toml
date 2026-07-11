@@ -1,0 +1,22 @@
+name = "svgr"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@svgr/core" },
+  { dependency = "@svgr/cli" },
+  { dependency = "@svgr/webpack" },
+  { dependency = "@svgr/rollup" },
+  { dependency = "@svgr/vite" },
+]
+
+[[config_patterns]]
+glob = ".svgrrc"
+
+[[config_patterns]]
+glob = ".svgrrc.{js,json}"
+
+[[config_patterns]]
+glob = "svgr.config.{js,cjs,mjs,ts}"
+
+tooling_dependencies = ["@svgr/core", "@svgr/cli", "@svgr/webpack", "@svgr/rollup", "@svgr/vite"]

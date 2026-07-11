@@ -1,0 +1,34 @@
+name = "jest"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "jest"
+
+[[entry_points]]
+glob = "**/*.test.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "**/*.spec.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "**/__tests__/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "**/__mocks__/**/*.{ts,tsx,js,jsx,mjs,cjs}"
+
+[[config_patterns]]
+glob = "jest.config.{ts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "jest.config.json"
+
+[[config_patterns]]
+glob = "jest.setup.{ts,js,tsx,jsx}"
+
+[[test_patterns]]
+glob = "**/__fixtures__/**/*.{ts,tsx,js,jsx,json}"
+
+[[test_patterns]]
+glob = "**/fixtures/**/*.{ts,tsx,js,jsx,json}"
+
+tooling_dependencies = ["jest", "jest-environment-jsdom", "ts-jest", "babel-jest"]

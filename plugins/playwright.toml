@@ -1,0 +1,28 @@
+name = "playwright"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@playwright/test"
+
+[[entry_points]]
+glob = "**/*.spec.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "**/*.test.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "tests/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "e2e/**/*.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "playwright.config.{ts,js}"
+
+[[test_patterns]]
+glob = "**/fixtures/**/*.{ts,tsx,js,jsx,json}"
+
+[[test_patterns]]
+glob = "e2e/fixtures/**/*.{ts,tsx,js,jsx,json}"
+
+tooling_dependencies = ["@playwright/test", "playwright"]

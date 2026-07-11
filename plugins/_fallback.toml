@@ -1,0 +1,66 @@
+# Universal fallbacks — always active on every package (ARCHITECTURE.md §5.3).
+name = "_fallback"
+languages = ["typescript", "javascript", "python"]
+
+[detect]
+always = true
+
+[[entry_points]]
+glob = "index.{ts,tsx,js,jsx,mjs,cjs}"
+
+[[entry_points]]
+glob = "src/index.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "main.{ts,js,mjs}"
+
+[[entry_points]]
+glob = "src/main.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "main.py"
+
+[[entry_points]]
+glob = "app.py"
+
+[[entry_points]]
+glob = "__main__.py"
+
+[[entry_points]]
+glob = "**/__main__.py"
+
+[[entry_points]]
+glob = "bin/**"
+
+[[entry_points]]
+glob = "scripts/**"
+
+[[entry_points]]
+glob = "src/cli/**"
+
+[[entry_points]]
+glob = "**/cli/*.{ts,tsx,js,jsx,py}"
+
+[[test_patterns]]
+glob = "**/*.{test,spec}.{ts,tsx,js,jsx,mjs}"
+
+[[test_patterns]]
+glob = "**/*.e2e-spec.{ts,tsx,js,jsx}"
+
+[[test_patterns]]
+glob = "**/*.e2e.{ts,tsx,js,jsx}"
+
+[[test_patterns]]
+glob = "**/__tests__/**"
+
+[[test_patterns]]
+glob = "**/test_*.py"
+
+[[test_patterns]]
+glob = "**/*_test.py"
+
+[[test_patterns]]
+glob = "**/tests/**"
+
+[[test_patterns]]
+glob = "**/conftest.py"

@@ -1,0 +1,10 @@
+name = "svgo"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "svgo"
+
+[[config_patterns]]
+glob = "svgo.config.{js,cjs,mjs,ts}"
+
+tooling_dependencies = ["svgo"]

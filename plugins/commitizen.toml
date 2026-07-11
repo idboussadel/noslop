@@ -1,0 +1,13 @@
+name = "commitizen"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "commitizen"
+
+[[config_patterns]]
+glob = ".czrc"
+
+[[config_patterns]]
+glob = ".cz.json"
+
+tooling_dependencies = ["commitizen", "cz-conventional-changelog"]

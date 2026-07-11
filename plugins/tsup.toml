@@ -1,0 +1,10 @@
+name = "tsup"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "tsup"
+
+[[config_patterns]]
+glob = "tsup.config.{ts,js,cjs,mjs}"
+
+tooling_dependencies = ["tsup"]

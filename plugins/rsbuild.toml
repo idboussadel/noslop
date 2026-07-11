@@ -1,0 +1,10 @@
+name = "rsbuild"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@rsbuild/core"
+
+[[config_patterns]]
+glob = "rsbuild.config.{ts,js,mjs,cjs}"
+
+tooling_dependencies = ["@rsbuild/core"]

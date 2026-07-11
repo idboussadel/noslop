@@ -1,0 +1,28 @@
+name = "astro"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "astro"
+
+[[entry_points]]
+glob = "src/pages/**/*.{astro,ts,tsx,js,jsx,mts,mjs,cts,cjs,md,mdx}"
+
+[[entry_points]]
+glob = "src/layouts/**/*.astro"
+
+[[entry_points]]
+glob = "src/content/**/*.{ts,js,mts,mjs,cts,cjs,md,mdx}"
+
+[[entry_points]]
+glob = "src/middleware.{js,ts,mjs,mts,cjs,cts}"
+
+[[entry_points]]
+glob = "src/middleware/index.{js,ts,mjs,mts,cjs,cts}"
+
+[[entry_points]]
+glob = "src/actions/index.{js,ts,mjs,mts,cjs,cts}"
+
+[[config_patterns]]
+glob = "astro.config.{ts,js,mjs}"
+
+tooling_dependencies = ["astro", "@astrojs/check", "@astrojs/ts-plugin"]

@@ -1,0 +1,22 @@
+name = "kysely"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "kysely" },
+  { dependency = "kysely-ctl" },
+]
+
+[[entry_points]]
+glob = "migrations/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "src/migrations/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "kysely.config.{ts,js}"
+
+[[config_patterns]]
+glob = ".config/kysely.config.{ts,js}"
+
+tooling_dependencies = ["kysely", "kysely-ctl"]

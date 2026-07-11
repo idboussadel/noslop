@@ -1,0 +1,16 @@
+name = "swc"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@swc/core" },
+  { dependency = "@swc/cli" },
+]
+
+[[config_patterns]]
+glob = ".swcrc"
+
+[[config_patterns]]
+glob = "swc.config.{js,cjs,mjs,ts}"
+
+tooling_dependencies = ["@swc/core", "@swc/cli", "@swc/jest", "@swc/register", "swc-loader"]

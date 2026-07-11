@@ -1,0 +1,10 @@
+name = "turborepo"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "turbo"
+
+[[config_patterns]]
+glob = "turbo.json"
+
+tooling_dependencies = ["turbo"]

@@ -1,0 +1,22 @@
+name = "vite"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "vite" },
+  { dependency = "rolldown-vite" },
+]
+
+[[entry_points]]
+glob = "src/main.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/index.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "index.html"
+
+[[config_patterns]]
+glob = "vite.config.{ts,js,mts,mjs}"
+
+tooling_dependencies = ["vite", "@vitejs/plugin-react", "@vitejs/plugin-vue"]

@@ -1,0 +1,22 @@
+name = "next-intl"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "next-intl"
+
+[[entry_points]]
+glob = "src/i18n.{ts,js}"
+
+[[entry_points]]
+glob = "src/i18n/request.{ts,js}"
+
+[[entry_points]]
+glob = "i18n.{ts,js}"
+
+[[entry_points]]
+glob = "i18n/request.{ts,js}"
+
+[[config_patterns]]
+glob = "messages/**/*.json"
+
+tooling_dependencies = ["next-intl"]

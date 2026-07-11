@@ -1,0 +1,18 @@
+name = "mintlify"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "mint" },
+  { dependency = "mintlify" },
+  { file_exists = "docs.json" },
+  { file_exists = "mint.json" },
+]
+
+[[config_patterns]]
+glob = "docs.json"
+
+[[config_patterns]]
+glob = "mint.json"
+
+tooling_dependencies = ["mint", "mintlify"]

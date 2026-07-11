@@ -1,0 +1,13 @@
+name = "typescript"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "typescript"
+
+[[config_patterns]]
+glob = "tsconfig.json"
+
+[[config_patterns]]
+glob = "tsconfig.*.json"
+
+tooling_dependencies = ["typescript", "ts-node", "tsx", "ts-loader"]

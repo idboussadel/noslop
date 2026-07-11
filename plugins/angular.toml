@@ -1,0 +1,91 @@
+name = "angular"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@angular/core" },
+  { dependency = "ng-packagr" },
+]
+
+[[entry_points]]
+glob = "src/public_api.ts"
+
+[[entry_points]]
+glob = "src/main.ts"
+
+[[entry_points]]
+glob = "src/app/**/*.component.ts"
+
+[[entry_points]]
+glob = "src/app/**/*.module.ts"
+
+[[entry_points]]
+glob = "src/app/**/*.service.ts"
+
+[[entry_points]]
+glob = "src/app/**/*.guard.ts"
+
+[[entry_points]]
+glob = "src/app/**/*.pipe.ts"
+
+[[entry_points]]
+glob = "src/app/**/*.directive.ts"
+
+[[entry_points]]
+glob = "src/app/**/*.resolver.ts"
+
+[[entry_points]]
+glob = "src/app/**/*.interceptor.ts"
+
+[[entry_points]]
+glob = "**/src/main.ts"
+
+[[entry_points]]
+glob = "**/src/app/**/*.component.ts"
+
+[[entry_points]]
+glob = "**/src/app/**/*.module.ts"
+
+[[entry_points]]
+glob = "**/src/app/**/*.service.ts"
+
+[[entry_points]]
+glob = "**/src/app/**/*.guard.ts"
+
+[[entry_points]]
+glob = "**/src/app/**/*.pipe.ts"
+
+[[entry_points]]
+glob = "**/src/app/**/*.directive.ts"
+
+[[entry_points]]
+glob = "**/src/app/**/*.resolver.ts"
+
+[[entry_points]]
+glob = "**/src/app/**/*.interceptor.ts"
+
+[[config_patterns]]
+glob = "angular.json"
+
+[[config_patterns]]
+glob = ".angular.json"
+
+[[config_patterns]]
+glob = "ng-package.json"
+
+[[config_patterns]]
+glob = "ng-package.prod.json"
+
+[[config_patterns]]
+glob = "src/polyfills.ts"
+
+[[config_patterns]]
+glob = "src/environments/**/*.ts"
+
+[[config_patterns]]
+glob = "src/app/app.config.ts"
+
+[[config_patterns]]
+glob = "src/app/app.config.server.ts"
+
+tooling_dependencies = ["@angular/cli", "@angular-devkit/build-angular", "@angular/compiler-cli", "@angular/compiler", "@angular/build", "ng-packagr", "zone.js", "tslib", "rxjs", "@angular/common", "@angular/platform-browser", "@angular/platform-browser-dynamic"]

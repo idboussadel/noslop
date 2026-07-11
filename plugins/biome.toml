@@ -1,0 +1,13 @@
+name = "biome"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@biomejs/biome"
+
+[[config_patterns]]
+glob = "biome.json"
+
+[[config_patterns]]
+glob = "biome.jsonc"
+
+tooling_dependencies = ["@biomejs/biome"]

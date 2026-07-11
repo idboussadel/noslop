@@ -1,0 +1,22 @@
+name = "expo-router"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "expo-router"
+
+[[config_patterns]]
+glob = "app.json"
+
+[[config_patterns]]
+glob = "app.config.{ts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "metro.config.{ts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "babel.config.{ts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "expo-env.d.ts"
+
+tooling_dependencies = ["expo", "expo-router", "expo-linking", "expo-server", "@expo/metro-runtime"]

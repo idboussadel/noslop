@@ -1,0 +1,13 @@
+schema = 1
+
+[complexity]
+max-cyclomatic = 5
+max-cognitive = 5
+
+# The legacy tree is exempt while it is migrated.
+[[complexity.override]]
+paths = ["src/legacy/**"]
+max-cognitive = 100
+max-cyclomatic = 100
+max-crap = 100
+reason = "legacy migration tracked in #142"

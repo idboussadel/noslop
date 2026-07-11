@@ -1,0 +1,10 @@
+name = "simple-git-hooks"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "simple-git-hooks"
+
+[[config_patterns]]
+glob = "simple-git-hooks.{js,cjs}"
+
+tooling_dependencies = ["simple-git-hooks"]

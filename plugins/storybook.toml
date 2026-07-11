@@ -1,0 +1,19 @@
+name = "storybook"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "storybook" },
+  { dependency = "@storybook/" },
+]
+
+[[entry_points]]
+glob = "**/*.stories.{ts,tsx,js,jsx,mdx}"
+
+[[entry_points]]
+glob = ".storybook/**/*.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = ".storybook/main.{ts,js,mjs,cjs}"
+
+tooling_dependencies = ["storybook", "@storybook/react", "@storybook/vue3", "@storybook/angular", "@storybook/svelte", "@storybook/web-components", "@storybook/html", "@storybook/server", "@storybook/blocks", "@storybook/testing-library", "@storybook/test", "@storybook/manager-api", "@storybook/preview-api"]

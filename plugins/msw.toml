@@ -1,0 +1,19 @@
+name = "msw"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "msw"
+
+[[entry_points]]
+glob = "mocks/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/mocks/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "**/mocks/**/*.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "public/mockServiceWorker.js"
+
+tooling_dependencies = ["msw", "msw-storybook-addon"]

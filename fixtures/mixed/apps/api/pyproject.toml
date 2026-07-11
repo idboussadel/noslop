@@ -1,0 +1,11 @@
+[project]
+name = "acme-api"
+version = "0.1.0"
+dependencies = [
+    "fastapi>=0.100",
+    "requests",
+    "unused-pkg",
+]
+
+[project.scripts]
+serve = "app.main:run"

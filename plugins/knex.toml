@@ -1,0 +1,16 @@
+name = "knex"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "knex"
+
+[[entry_points]]
+glob = "migrations/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "seeds/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "knexfile.{ts,js}"
+
+tooling_dependencies = ["knex"]

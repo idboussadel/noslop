@@ -1,0 +1,38 @@
+name = "tanstack-router"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@tanstack/react-router" },
+  { dependency = "@tanstack/solid-router" },
+  { dependency = "@tanstack/start" },
+  { dependency = "@tanstack/react-start" },
+  { dependency = "@tanstack/solid-start" },
+  { dependency = "@tanstack/virtual-file-routes" },
+]
+
+[[entry_points]]
+glob = "src/server.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/client.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/router.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "tsr.config.json"
+
+[[config_patterns]]
+glob = "vite.config.{ts,js,mts,mjs}"
+
+[[config_patterns]]
+glob = "rsbuild.config.{ts,js,mts,mjs}"
+
+[[config_patterns]]
+glob = "rspack.config.{ts,js,mts,mjs}"
+
+[[config_patterns]]
+glob = "webpack.config.{ts,js,mts,mjs,cjs}"
+
+tooling_dependencies = ["@tanstack/react-router", "@tanstack/react-router-devtools", "@tanstack/solid-router", "@tanstack/solid-router-devtools", "@tanstack/start", "@tanstack/react-start", "@tanstack/solid-start", "@tanstack/router-cli", "@tanstack/router-plugin", "@tanstack/router-vite-plugin", "@tanstack/virtual-file-routes"]

@@ -1,0 +1,17 @@
+name = "opencode"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { file_exists = "opencode.json" },
+  { file_exists = ".opencode" },
+  { dependency = "@opencode-ai/sdk" },
+]
+
+[[entry_points]]
+glob = ".opencode/plugins/**/*.{js,ts,mjs,cjs,mts,cts}"
+
+[[config_patterns]]
+glob = "opencode.json"
+
+tooling_dependencies = ["@opencode-ai/plugin"]

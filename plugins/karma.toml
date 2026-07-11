@@ -1,0 +1,10 @@
+name = "karma"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "karma"
+
+[[config_patterns]]
+glob = "karma.conf.{js,ts}"
+
+tooling_dependencies = ["karma"]

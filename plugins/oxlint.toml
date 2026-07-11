@@ -1,0 +1,16 @@
+name = "oxlint"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "oxlint"
+
+[[config_patterns]]
+glob = ".oxlintrc.json"
+
+[[config_patterns]]
+glob = "oxlint.json"
+
+[[config_patterns]]
+glob = "oxlint.config.ts"
+
+tooling_dependencies = ["oxlint", "oxlint-tsgolint"]

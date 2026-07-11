@@ -1,0 +1,12 @@
+name = "click"
+language = "python"
+route_decorators = ["command", "group"]
+
+[detect]
+dependency = "click"
+
+[[entry_points]]
+glob = "**/cli.py"
+
+[[entry_points]]
+glob = "**/__main__.py"

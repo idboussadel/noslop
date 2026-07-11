@@ -1,0 +1,11 @@
+[package]
+name = "noslop-passes"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+noslop-graph = { workspace = true }
+petgraph = { workspace = true }
+globset = { workspace = true }
+xxhash-rust = { workspace = true }

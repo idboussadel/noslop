@@ -1,0 +1,28 @@
+name = "expo"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "expo"
+
+[[entry_points]]
+glob = "App.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/App.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "app.json"
+
+[[config_patterns]]
+glob = "app.config.{ts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "metro.config.{ts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "babel.config.{ts,js,mjs,cjs}"
+
+tooling_dependencies = ["expo", "expo-cli", "@expo/webpack-config"]

@@ -1,0 +1,13 @@
+name = "nyc"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "nyc"
+
+[[config_patterns]]
+glob = ".nycrc"
+
+[[config_patterns]]
+glob = ".nycrc.{json,yml,yaml}"
+
+tooling_dependencies = ["nyc"]

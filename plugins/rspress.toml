@@ -1,0 +1,8 @@
+name = "rspress"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "rspress" },
+  { dependency = "@rspress/" },
+]

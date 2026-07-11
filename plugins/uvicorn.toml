@@ -1,0 +1,11 @@
+name = "uvicorn"
+language = "python"
+
+[detect]
+dependencies = ["uvicorn", "uvicorn[standard]"]
+
+[[entry_points]]
+glob = "**/asgi.py"
+
+[[config_patterns]]
+glob = "uvicorn.conf.py"

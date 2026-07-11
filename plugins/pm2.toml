@@ -1,0 +1,13 @@
+name = "pm2"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "pm2"
+
+[[config_patterns]]
+glob = "ecosystem.config.{js,cjs}"
+
+[[config_patterns]]
+glob = "pm2.config.{js,cjs}"
+
+tooling_dependencies = ["pm2"]

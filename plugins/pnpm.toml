@@ -1,0 +1,26 @@
+name = "pnpm"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { file_exists = "pnpm-workspace.yaml" },
+  { file_exists = "pnpm-lock.yaml" },
+  { dependency = "pnpm" },
+]
+
+[[config_patterns]]
+glob = "pnpm-workspace.yaml"
+
+[[config_patterns]]
+glob = "pnpm-lock.yaml"
+
+[[config_patterns]]
+glob = ".pnpmfile.cjs"
+
+[[config_patterns]]
+glob = ".pnpmfile.mjs"
+
+[[config_patterns]]
+glob = ".npmrc"
+
+tooling_dependencies = ["pnpm"]

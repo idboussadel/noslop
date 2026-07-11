@@ -1,0 +1,18 @@
+name = "content-collections"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@content-collections/core" },
+  { dependency = "@content-collections/vite" },
+  { dependency = "@content-collections/next" },
+  { dependency = "@content-collections/solid-start" },
+  { dependency = "@content-collections/remix-vite" },
+  { dependency = "@content-collections/qwik" },
+  { dependency = "@content-collections/vinxi" },
+]
+
+[[entry_points]]
+glob = "content-collections.{ts,tsx,js,jsx,mts,mjs,cts,cjs}"
+
+tooling_dependencies = ["@content-collections/core", "@content-collections/vite", "@content-collections/next", "@content-collections/solid-start", "@content-collections/remix-vite", "@content-collections/qwik", "@content-collections/vinxi", "@content-collections/markdown", "@content-collections/mdx"]

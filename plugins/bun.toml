@@ -1,0 +1,25 @@
+name = "bun"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "bun-types" },
+  { dependency = "@types/bun" },
+]
+
+[[entry_points]]
+glob = "**/*.test.{js,jsx,ts,tsx}"
+
+[[entry_points]]
+glob = "**/*_test.{js,jsx,ts,tsx}"
+
+[[entry_points]]
+glob = "**/*.spec.{js,jsx,ts,tsx}"
+
+[[entry_points]]
+glob = "**/*_spec.{js,jsx,ts,tsx}"
+
+[[config_patterns]]
+glob = "bunfig.toml"
+
+tooling_dependencies = ["bun-types", "@types/bun"]

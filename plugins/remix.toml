@@ -1,0 +1,28 @@
+name = "remix"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@remix-run/node" },
+  { dependency = "@remix-run/react" },
+  { dependency = "@remix-run/cloudflare" },
+  { dependency = "@remix-run/cloudflare-pages" },
+  { dependency = "@remix-run/deno" },
+]
+
+[[entry_points]]
+glob = "app/routes/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/root.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/entry.client.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/entry.server.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "remix.config.{ts,js,mjs}"
+
+tooling_dependencies = ["@remix-run/dev", "@remix-run/node", "@remix-run/react", "@remix-run/cloudflare", "@remix-run/serve"]

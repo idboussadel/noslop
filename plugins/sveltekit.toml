@@ -1,0 +1,58 @@
+name = "sveltekit"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@sveltejs/kit"
+
+[[entry_points]]
+glob = "src/routes/**/+page.svelte"
+
+[[entry_points]]
+glob = "src/routes/**/+page.{ts,js}"
+
+[[entry_points]]
+glob = "src/routes/**/+page.server.{ts,js}"
+
+[[entry_points]]
+glob = "src/routes/**/+layout.svelte"
+
+[[entry_points]]
+glob = "src/routes/**/+layout.{ts,js}"
+
+[[entry_points]]
+glob = "src/routes/**/+layout.server.{ts,js}"
+
+[[entry_points]]
+glob = "src/routes/**/+server.{ts,js}"
+
+[[entry_points]]
+glob = "src/routes/**/+error.svelte"
+
+[[entry_points]]
+glob = "src/routes/**/+page@*.svelte"
+
+[[entry_points]]
+glob = "src/routes/**/+layout@*.svelte"
+
+[[entry_points]]
+glob = "src/hooks.server.{ts,js}"
+
+[[entry_points]]
+glob = "src/hooks.client.{ts,js}"
+
+[[entry_points]]
+glob = "src/hooks.{ts,js}"
+
+[[entry_points]]
+glob = "src/service-worker.{ts,js}"
+
+[[entry_points]]
+glob = "src/params/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "src/**/*.remote.{ts,js}"
+
+[[config_patterns]]
+glob = "svelte.config.{js,cjs,mjs,ts}"
+
+tooling_dependencies = ["svelte", "@sveltejs/kit", "@sveltejs/adapter-auto", "@sveltejs/adapter-node", "@sveltejs/adapter-static", "@sveltejs/adapter-vercel", "@sveltejs/adapter-netlify", "@sveltejs/adapter-cloudflare", "@sveltejs/vite-plugin-svelte", "svelte-check", "svelte-preprocess"]

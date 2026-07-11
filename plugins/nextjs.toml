@@ -1,0 +1,178 @@
+name = "nextjs"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "next"
+
+[[entry_points]]
+glob = "app/**/page.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/layout.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/loading.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/error.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/not-found.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/template.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/default.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/route.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/global-error.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/forbidden.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/unauthorized.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/global-not-found.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/opengraph-image.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/twitter-image.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/icon.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/apple-icon.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/manifest.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/sitemap.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/**/robots.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "pages/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/page.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/layout.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/loading.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/error.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/not-found.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/template.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/default.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/route.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/global-error.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/forbidden.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/unauthorized.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/global-not-found.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/opengraph-image.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/twitter-image.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/icon.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/apple-icon.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/manifest.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/sitemap.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/app/**/robots.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/pages/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "middleware.{ts,js}"
+
+[[entry_points]]
+glob = "src/middleware.{ts,js}"
+
+[[entry_points]]
+glob = "proxy.{ts,js}"
+
+[[entry_points]]
+glob = "src/proxy.{ts,js}"
+
+[[entry_points]]
+glob = "instrumentation.{ts,js}"
+
+[[entry_points]]
+glob = "instrumentation-client.{ts,js}"
+
+[[entry_points]]
+glob = "src/instrumentation.{ts,js}"
+
+[[entry_points]]
+glob = "src/instrumentation-client.{ts,js}"
+
+[[config_patterns]]
+glob = "next.config.{ts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "next-env.d.ts"
+
+[[config_patterns]]
+glob = "favicon.ico"
+
+[[config_patterns]]
+glob = "mdx-components.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "src/mdx-components.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "src/i18n/request.{ts,js}"
+
+[[config_patterns]]
+glob = "src/i18n/routing.{ts,js}"
+
+[[config_patterns]]
+glob = "i18n/request.{ts,js}"
+
+[[config_patterns]]
+glob = "i18n/routing.{ts,js}"
+
+tooling_dependencies = ["next", "@next/font", "@next/mdx", "@next/bundle-analyzer", "@next/env", "server-only", "client-only"]

@@ -1,0 +1,23 @@
+name = "wuchale"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "wuchale" },
+  { dependency = "@wuchale/vite-plugin" },
+  { file_exists = "wuchale.config.js" },
+]
+
+[[config_patterns]]
+glob = "wuchale.config.js"
+
+[[config_patterns]]
+glob = "**/wuchale.config.js"
+
+[[config_patterns]]
+glob = "vite.config.{ts,js,mts,mjs}"
+
+[[config_patterns]]
+glob = "**/vite.config.{ts,js,mts,mjs}"
+
+tooling_dependencies = ["wuchale", "@wuchale/vite-plugin"]

@@ -1,0 +1,42 @@
+name = "qwik"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@builder.io/qwik" },
+  { dependency = "@builder.io/qwik-city" },
+  { dependency = "@qwik.dev/core" },
+  { dependency = "@qwik.dev/router" },
+]
+
+[[entry_points]]
+glob = "src/routes/**/index.{ts,tsx,js,jsx,mdx}"
+
+[[entry_points]]
+glob = "src/routes/**/layout.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/routes/**/layout!.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/routes/**/plugin.{ts,js}"
+
+[[entry_points]]
+glob = "src/routes/**/plugin@*.{ts,js}"
+
+[[entry_points]]
+glob = "src/routes/**/service-worker.{ts,js}"
+
+[[entry_points]]
+glob = "src/global.{css,scss,less}"
+
+[[entry_points]]
+glob = "adapters/**/vite.config.{ts,js}"
+
+[[config_patterns]]
+glob = "src/entry.*.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "src/root.{ts,tsx,js,jsx}"
+
+tooling_dependencies = ["@builder.io/qwik", "@builder.io/qwik-city", "@qwik.dev/core", "@qwik.dev/router", "@builder.io/qwik-react", "@qwik.dev/react"]

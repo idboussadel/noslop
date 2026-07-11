@@ -1,0 +1,16 @@
+name = "cspell"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "cspell"
+
+[[config_patterns]]
+glob = ".cspell.{json,jsonc,yml,yaml}"
+
+[[config_patterns]]
+glob = "cspell.{json,jsonc}"
+
+[[config_patterns]]
+glob = "cspell.config.{js,cjs,mjs,yaml,yml}"
+
+tooling_dependencies = ["cspell"]

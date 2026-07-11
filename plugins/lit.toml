@@ -1,0 +1,11 @@
+name = "lit"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "lit" },
+  { dependency = "lit-element" },
+  { dependency = "lit-html" },
+]
+
+tooling_dependencies = ["lit", "lit-element", "lit-html", "@lit/reactive-element", "@lit/context", "@lit/task", "@lit/localize", "@lit-labs/ssr", "@lit-labs/router", "@lit-labs/observers", "@lit-labs/motion", "@lit-labs/preact-signals", "@lit-labs/signals", "@lit-labs/virtualizer"]

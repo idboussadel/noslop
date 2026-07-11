@@ -1,0 +1,39 @@
+name = "django"
+language = "python"
+route_decorators = ["receiver"]
+
+[detect]
+file_exists = "manage.py"
+
+[[entry_points]]
+glob = "manage.py"
+
+[[entry_points]]
+glob = "**/settings.py"
+
+[[entry_points]]
+glob = "**/settings/*.py"
+
+[[entry_points]]
+glob = "**/urls.py"
+
+[[entry_points]]
+glob = "**/wsgi.py"
+
+[[entry_points]]
+glob = "**/asgi.py"
+
+[[entry_points]]
+glob = "**/admin.py"
+
+[[entry_points]]
+glob = "**/apps.py"
+
+[[entry_points]]
+glob = "**/models.py"
+
+[[entry_points]]
+glob = "**/views.py"
+
+[[entry_points]]
+glob = "**/migrations/**"

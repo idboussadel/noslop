@@ -1,0 +1,22 @@
+name = "nitro"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "nitropack"
+
+[[entry_points]]
+glob = "server/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "routes/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "api/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "middleware/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "nitro.config.{ts,js}"
+
+tooling_dependencies = ["nitropack"]

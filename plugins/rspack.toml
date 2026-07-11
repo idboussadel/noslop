@@ -1,0 +1,19 @@
+name = "rspack"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@rspack/core" },
+  { dependency = "@rspack/cli" },
+]
+
+[[entry_points]]
+glob = "src/index.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "rspack.config.{ts,js,mjs,cjs}"
+
+[[config_patterns]]
+glob = "rspack.*.config.{ts,js,mjs,cjs}"
+
+tooling_dependencies = ["@rspack/core", "@rspack/cli", "@rspack/dev-server", "@rspack/plugin-react-refresh", "@rspack/plugin-minify", "@rspack/plugin-html"]

@@ -1,0 +1,31 @@
+name = "react-native"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "react-native"
+
+[[entry_points]]
+glob = "index.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "App.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/App.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app.config.{ts,js}"
+
+[[config_patterns]]
+glob = "metro.config.{ts,js}"
+
+[[config_patterns]]
+glob = "react-native.config.{ts,js}"
+
+[[config_patterns]]
+glob = "babel.config.{ts,js}"
+
+[[config_patterns]]
+glob = "app.json"
+
+tooling_dependencies = ["react-native", "metro", "metro-config", "@react-native-community/cli", "@react-native/metro-config"]

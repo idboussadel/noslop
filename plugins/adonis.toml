@@ -1,0 +1,118 @@
+name = "adonis"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@adonisjs/core"
+
+[[entry_points]]
+glob = "server.{ts,js}"
+
+[[entry_points]]
+glob = "ace"
+
+[[entry_points]]
+glob = "ace.{ts,js}"
+
+[[entry_points]]
+glob = "bin/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "start/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "providers/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "commands/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "config/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "contracts/**/*.ts"
+
+[[entry_points]]
+glob = "database/migrations/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "database/seeders/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "database/factories/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "app/Controllers/Http/**/*.ts"
+
+[[entry_points]]
+glob = "app/Controllers/Ws/**/*.ts"
+
+[[entry_points]]
+glob = "app/Models/**/*.ts"
+
+[[entry_points]]
+glob = "app/Middleware/**/*.ts"
+
+[[entry_points]]
+glob = "app/Validators/**/*.ts"
+
+[[entry_points]]
+glob = "app/Exceptions/**/*.ts"
+
+[[entry_points]]
+glob = "app/Mailers/**/*.ts"
+
+[[entry_points]]
+glob = "app/Listeners/**/*.ts"
+
+[[entry_points]]
+glob = "app/Services/**/*.ts"
+
+[[entry_points]]
+glob = "app/Repositories/**/*.ts"
+
+[[entry_points]]
+glob = "app/Strategies/**/*.ts"
+
+[[entry_points]]
+glob = "app/Helpers/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "app/controllers/**/*.ts"
+
+[[entry_points]]
+glob = "app/models/**/*.ts"
+
+[[entry_points]]
+glob = "app/middleware/**/*.ts"
+
+[[entry_points]]
+glob = "app/validators/**/*.ts"
+
+[[entry_points]]
+glob = "app/exceptions/**/*.ts"
+
+[[entry_points]]
+glob = "app/mails/**/*.ts"
+
+[[entry_points]]
+glob = "app/listeners/**/*.ts"
+
+[[entry_points]]
+glob = "app/services/**/*.ts"
+
+[[entry_points]]
+glob = "app/repositories/**/*.ts"
+
+[[entry_points]]
+glob = "app/helpers/**/*.ts"
+
+[[config_patterns]]
+glob = ".adonisrc.json"
+
+[[config_patterns]]
+glob = "adonisrc.ts"
+
+[[config_patterns]]
+glob = "adonisrc.js"
+
+tooling_dependencies = ["@adonisjs/core", "@adonisjs/application", "@adonisjs/ace", "@adonisjs/assembler", "@adonisjs/repl", "@adonisjs/fold", "@adonisjs/config", "@adonisjs/env", "@adonisjs/encryption", "@adonisjs/hash", "@adonisjs/events", "@adonisjs/logger", "@adonisjs/http-server", "@adonisjs/bodyparser", "@adonisjs/static", "@adonisjs/health", "@adonisjs/lucid", "@adonisjs/auth", "@adonisjs/session", "@adonisjs/shield", "@adonisjs/view", "@adonisjs/i18n", "@adonisjs/mail", "@adonisjs/redis", "@adonisjs/bouncer", "@adonisjs/limiter", "@adonisjs/drive", "@adonisjs/validator", "@adonisjs/http-transformers", "@vinejs/vine", "adonis-preset-ts", "adonis5-sentry", "@boringnode/encryption", "argon2", "bcrypt", "edge.js", "pino-pretty", "youch", "phc-bcrypt", "reflect-metadata"]

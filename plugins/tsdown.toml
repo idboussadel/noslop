@@ -1,0 +1,10 @@
+name = "tsdown"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "tsdown"
+
+[[config_patterns]]
+glob = "tsdown.config.{ts,mts,cts,js,cjs,mjs}"
+
+tooling_dependencies = ["tsdown"]

@@ -1,0 +1,21 @@
+name = "sentry"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@sentry/nextjs" },
+  { dependency = "@sentry/react" },
+  { dependency = "@sentry/node" },
+  { dependency = "@sentry/browser" },
+]
+
+[[config_patterns]]
+glob = "sentry.client.config.{ts,js,mjs}"
+
+[[config_patterns]]
+glob = "sentry.server.config.{ts,js,mjs}"
+
+[[config_patterns]]
+glob = "sentry.edge.config.{ts,js,mjs}"
+
+tooling_dependencies = ["@sentry/nextjs", "@sentry/react", "@sentry/node", "@sentry/browser", "@sentry/cli", "@sentry/webpack-plugin", "@sentry/vite-plugin"]

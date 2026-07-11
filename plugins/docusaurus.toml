@@ -1,0 +1,40 @@
+name = "docusaurus"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@docusaurus/core"
+
+[[entry_points]]
+glob = "docs/**/*.{md,mdx}"
+
+[[entry_points]]
+glob = "blog/**/*.{md,mdx}"
+
+[[entry_points]]
+glob = "src/pages/**/*.{ts,tsx,js,jsx,md,mdx}"
+
+[[entry_points]]
+glob = "sidebars.{js,ts}"
+
+[[entry_points]]
+glob = "src/theme/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/theme/**/index.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "versioned_docs/**/*.{md,mdx}"
+
+[[entry_points]]
+glob = "i18n/*/docusaurus-plugin-content-docs/**/*.{md,mdx}"
+
+[[entry_points]]
+glob = "i18n/*/docusaurus-plugin-content-blog/**/*.{md,mdx}"
+
+[[entry_points]]
+glob = "i18n/*/docusaurus-plugin-content-pages/**/*.{md,mdx}"
+
+[[config_patterns]]
+glob = "docusaurus.config.{js,ts,mjs}"
+
+tooling_dependencies = ["@docusaurus/core", "@docusaurus/preset-classic", "@docusaurus/plugin-content-docs", "@docusaurus/plugin-content-blog", "@docusaurus/plugin-content-pages", "@docusaurus/theme-classic"]

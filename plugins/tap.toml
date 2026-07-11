@@ -1,0 +1,37 @@
+name = "tap"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "tap"
+
+[[entry_points]]
+glob = "test/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"
+
+[[entry_points]]
+glob = "tests/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"
+
+[[entry_points]]
+glob = "__tests__/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"
+
+[[entry_points]]
+glob = "**/*.test.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"
+
+[[entry_points]]
+glob = "**/*.spec.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"
+
+[[entry_points]]
+glob = "test.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"
+
+[[entry_points]]
+glob = "tests.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"
+
+[[config_patterns]]
+glob = ".taprc"
+
+[[config_patterns]]
+glob = ".taprc.{json,yml,yaml}"
+
+[[config_patterns]]
+glob = "config/taprc"
+
+tooling_dependencies = ["tap"]

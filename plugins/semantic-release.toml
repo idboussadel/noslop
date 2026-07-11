@@ -1,0 +1,13 @@
+name = "semantic-release"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "semantic-release"
+
+[[config_patterns]]
+glob = "release.config.{js,cjs,mjs}"
+
+[[config_patterns]]
+glob = ".releaserc.{js,cjs}"
+
+tooling_dependencies = ["semantic-release", "@semantic-release/commit-analyzer", "@semantic-release/release-notes-generator", "@semantic-release/changelog", "@semantic-release/npm", "@semantic-release/github", "@semantic-release/git"]

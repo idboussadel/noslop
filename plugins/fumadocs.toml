@@ -1,0 +1,14 @@
+name = "fumadocs"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "fumadocs-mdx" },
+  { dependency = "fumadocs-core" },
+  { dependency = "fumadocs-ui" },
+  { file_exists = "source.config.ts" },
+  { file_exists = "source.config.js" },
+]
+
+[[config_patterns]]
+glob = "source.config.{ts,tsx,js,jsx,mts,mjs,cts,cjs}"

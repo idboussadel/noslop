@@ -1,0 +1,9 @@
+{
+  "name": "@acme/web",
+  "version": "1.0.0",
+  "dependencies": {
+    "next": "14.0.0",
+    "lodash": "4.17.0",
+    "unused-lib": "1.0.0"
+  }
+}

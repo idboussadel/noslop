@@ -1,0 +1,15 @@
+name = "typer"
+language = "python"
+route_decorators = ["command", "callback"]
+
+[detect]
+dependency = "typer"
+
+[[entry_points]]
+glob = "**/cli.py"
+
+[[entry_points]]
+glob = "**/main.py"
+
+[[entry_points]]
+glob = "**/__main__.py"

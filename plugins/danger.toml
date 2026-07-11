@@ -1,0 +1,13 @@
+name = "danger"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "danger"
+
+[[config_patterns]]
+glob = "dangerfile.{js,ts,mjs,cjs}"
+
+[[config_patterns]]
+glob = "**/dangerfile.{js,ts,mjs,cjs}"
+
+tooling_dependencies = ["danger"]

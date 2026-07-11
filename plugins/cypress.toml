@@ -1,0 +1,19 @@
+name = "cypress"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "cypress"
+
+[[entry_points]]
+glob = "**/*.cy.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "cypress/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "cypress/support/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "cypress.config.{ts,js,mjs,cjs}"
+
+tooling_dependencies = ["cypress", "@cypress/react", "@cypress/vue"]

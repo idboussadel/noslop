@@ -1,0 +1,34 @@
+name = "lefthook"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "lefthook" },
+  { dependency = "@evilmartians/lefthook" },
+]
+
+[[config_patterns]]
+glob = "lefthook.yml"
+
+[[config_patterns]]
+glob = "lefthook.yaml"
+
+[[config_patterns]]
+glob = ".lefthook.yml"
+
+[[config_patterns]]
+glob = ".lefthook.yaml"
+
+[[config_patterns]]
+glob = "lefthook.toml"
+
+[[config_patterns]]
+glob = ".lefthook.toml"
+
+[[config_patterns]]
+glob = ".lefthook/**/*"
+
+[[config_patterns]]
+glob = ".lefthook-local/**/*"
+
+tooling_dependencies = ["lefthook", "@evilmartians/lefthook"]

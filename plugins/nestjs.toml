@@ -1,0 +1,46 @@
+name = "nestjs"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "@nestjs/core"
+
+[[entry_points]]
+glob = "src/main.ts"
+
+[[entry_points]]
+glob = "src/**/*.module.ts"
+
+[[entry_points]]
+glob = "src/**/*.controller.ts"
+
+[[entry_points]]
+glob = "src/**/*.service.ts"
+
+[[entry_points]]
+glob = "src/**/*.guard.ts"
+
+[[entry_points]]
+glob = "src/**/*.interceptor.ts"
+
+[[entry_points]]
+glob = "src/**/*.pipe.ts"
+
+[[entry_points]]
+glob = "src/**/*.filter.ts"
+
+[[entry_points]]
+glob = "src/**/*.middleware.ts"
+
+[[entry_points]]
+glob = "src/**/*.decorator.ts"
+
+[[entry_points]]
+glob = "src/**/*.gateway.ts"
+
+[[entry_points]]
+glob = "src/**/*.resolver.ts"
+
+[[config_patterns]]
+glob = "nest-cli.json"
+
+tooling_dependencies = ["@nestjs/core", "@nestjs/common", "@nestjs/cli", "@nestjs/testing", "@nestjs/platform-express", "@nestjs/platform-fastify", "@nestjs/swagger", "@nestjs/config", "@nestjs/typeorm", "@nestjs/mongoose", "reflect-metadata"]

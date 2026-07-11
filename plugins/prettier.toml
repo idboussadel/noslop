@@ -1,0 +1,16 @@
+name = "prettier"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "prettier"
+
+[[config_patterns]]
+glob = ".prettierrc"
+
+[[config_patterns]]
+glob = ".prettierrc.{json,json5,yml,yaml,toml,js,cjs,mjs,ts,cts}"
+
+[[config_patterns]]
+glob = "prettier.config.{js,cjs,mjs,ts,cts}"
+
+tooling_dependencies = ["prettier"]

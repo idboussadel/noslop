@@ -1,0 +1,16 @@
+name = "nodemon"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "nodemon"
+
+[[config_patterns]]
+glob = "nodemon.json"
+
+[[config_patterns]]
+glob = ".nodemonrc"
+
+[[config_patterns]]
+glob = ".nodemonrc.{json,yml,yaml}"
+
+tooling_dependencies = ["nodemon"]

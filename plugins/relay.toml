@@ -1,0 +1,14 @@
+name = "relay"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "relay-runtime" },
+  { dependency = "react-relay" },
+  { dependency = "relay-compiler" },
+]
+
+[[config_patterns]]
+glob = "relay.config.{js,json}"
+
+tooling_dependencies = ["relay-runtime", "relay-compiler", "babel-plugin-relay", "react-relay", "relay-test-utils"]

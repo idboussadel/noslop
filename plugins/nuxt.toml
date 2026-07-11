@@ -1,0 +1,91 @@
+name = "nuxt"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "nuxt" },
+  { dependency = "nuxt3" },
+]
+
+[[entry_points]]
+glob = "pages/**/*.{vue,ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "layouts/**/*.{vue,ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "middleware/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "server/api/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "server/routes/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "server/middleware/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "server/plugins/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "server/utils/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "plugins/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+
+[[entry_points]]
+glob = "plugins/**/index.{ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+
+[[entry_points]]
+glob = "composables/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+
+[[entry_points]]
+glob = "utils/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+
+[[entry_points]]
+glob = "shared/utils/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+
+[[entry_points]]
+glob = "shared/types/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+
+[[entry_points]]
+glob = "components/**/*.{vue,ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "modules/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "app/pages/**/*.{vue,ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/layouts/**/*.{vue,ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/middleware/**/*.{ts,js}"
+
+[[entry_points]]
+glob = "app/plugins/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+
+[[entry_points]]
+glob = "app/plugins/**/index.{ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+
+[[entry_points]]
+glob = "app/composables/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+
+[[entry_points]]
+glob = "app/utils/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}"
+
+[[entry_points]]
+glob = "app/components/**/*.{vue,ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "app/modules/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "nuxt.config.{ts,js}"
+
+[[config_patterns]]
+glob = "src/module.{ts,js}"
+
+tooling_dependencies = ["nuxt", "@nuxt/devtools", "@nuxt/test-utils", "@nuxt/schema", "@nuxt/kit", "vue", "vue-router", "ofetch", "h3", "@unhead/vue", "@unhead/schema", "nitropack", "defu", "hookable", "ufo", "unctx", "unenv", "ohash", "pathe", "scule", "unimport", "unstorage", "radix3", "cookie-es", "crossws", "consola"]

@@ -1,0 +1,25 @@
+name = "convex"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "convex"
+
+[[entry_points]]
+glob = "convex/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "convex/_generated/**/*"
+
+[[config_patterns]]
+glob = "convex/schema.{ts,js}"
+
+[[config_patterns]]
+glob = "convex/auth.config.{ts,js}"
+
+[[config_patterns]]
+glob = "convex/auth.{ts,js}"
+
+[[config_patterns]]
+glob = "convex/http.{ts,js}"
+
+tooling_dependencies = ["convex"]

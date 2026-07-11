@@ -1,0 +1,13 @@
+name = "remark"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "remark" },
+  { dependency = "remark-cli" },
+]
+
+[[config_patterns]]
+glob = ".remarkrc.{js,cjs,mjs}"
+
+tooling_dependencies = ["remark", "remark-cli"]

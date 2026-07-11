@@ -1,0 +1,13 @@
+name = "tailwind"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "tailwindcss" },
+  { dependency = "@tailwindcss/postcss" },
+]
+
+[[config_patterns]]
+glob = "tailwind.config.{ts,js,cjs,mjs}"
+
+tooling_dependencies = ["tailwindcss", "@tailwindcss/postcss"]

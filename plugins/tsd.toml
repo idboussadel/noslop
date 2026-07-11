@@ -1,0 +1,16 @@
+name = "tsd"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "tsd"
+
+[[entry_points]]
+glob = "**/*.test-d.{ts,tsx}"
+
+[[entry_points]]
+glob = "test-d/**/*.test-d.{ts,tsx}"
+
+[[entry_points]]
+glob = "test-d/**/*.{ts,tsx}"
+
+tooling_dependencies = ["tsd"]

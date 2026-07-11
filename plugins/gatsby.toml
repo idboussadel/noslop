@@ -1,0 +1,28 @@
+name = "gatsby"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "gatsby"
+
+[[entry_points]]
+glob = "src/pages/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/templates/**/*.{ts,tsx,js,jsx}"
+
+[[entry_points]]
+glob = "src/api/**/*.{ts,js}"
+
+[[config_patterns]]
+glob = "gatsby-config.{ts,js,mjs}"
+
+[[config_patterns]]
+glob = "gatsby-node.{ts,js,mjs}"
+
+[[config_patterns]]
+glob = "gatsby-browser.{ts,tsx,js,jsx}"
+
+[[config_patterns]]
+glob = "gatsby-ssr.{ts,tsx,js,jsx}"
+
+tooling_dependencies = ["gatsby", "gatsby-cli"]

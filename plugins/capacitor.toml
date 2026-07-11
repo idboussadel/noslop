@@ -1,0 +1,13 @@
+name = "capacitor"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "@capacitor/core" },
+  { dependency = "@capacitor/cli" },
+]
+
+[[config_patterns]]
+glob = "capacitor.config.{ts,js,json}"
+
+tooling_dependencies = ["@capacitor/core", "@capacitor/cli"]

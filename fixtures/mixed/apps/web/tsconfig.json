@@ -1,0 +1,9 @@
+{
+  // Path alias so `@/lib/x` resolves to `src/lib/x`.
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+name = "velite"
+languages = ["typescript", "javascript"]
+
+[detect]
+any = [
+  { dependency = "velite" },
+  { file_exists = "velite.config.ts" },
+  { file_exists = "velite.config.js" },
+]
+
+[[config_patterns]]
+glob = "velite.config.{ts,mts,cts,js,mjs,cjs}"
+
+tooling_dependencies = ["velite"]

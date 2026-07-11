@@ -1,0 +1,10 @@
+name = "openapi-ts"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "openapi-typescript"
+
+[[config_patterns]]
+glob = "openapi-ts.config.{ts,js,cjs,mjs}"
+
+tooling_dependencies = ["openapi-typescript", "openapi-typescript-codegen"]

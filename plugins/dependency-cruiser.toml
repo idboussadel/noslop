@@ -1,0 +1,10 @@
+name = "dependency-cruiser"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "dependency-cruiser"
+
+[[config_patterns]]
+glob = ".dependency-cruiser.{js,cjs,mjs,json}"
+
+tooling_dependencies = ["dependency-cruiser"]

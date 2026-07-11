@@ -1,0 +1,13 @@
+name = "stylelint"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "stylelint"
+
+[[config_patterns]]
+glob = "stylelint.config.{js,cjs,mjs}"
+
+[[config_patterns]]
+glob = ".stylelintrc.{js,cjs}"
+
+tooling_dependencies = ["stylelint", "stylelint-config-standard", "stylelint-config-recommended", "stylelint-order", "stylelint-scss", "postcss-scss"]

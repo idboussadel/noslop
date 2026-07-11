@@ -1,0 +1,10 @@
+name = "rollup"
+languages = ["typescript", "javascript"]
+
+[detect]
+dependency = "rollup"
+
+[[config_patterns]]
+glob = "rollup.config.{js,ts,mjs,cjs}"
+
+tooling_dependencies = ["rollup"]
