@@ -8,6 +8,9 @@ Goal: clean high-confidence issues, model intentional exceptions, ratchet the re
 1. noslop --format json > report.json
 2. noslop init                    # optional: noslop.toml with detected plugins
 3. Fix in order: cycles → dead files → exports/imports → deps
+   - Preview: `noslop fix --dry-run`
+   - Apply High-confidence: `noslop fix`
+   - Undo if needed: `noslop fix restore`
 4. noslop explain <rule>          # before each suppression
 5. Re-run after each batch
 6. noslop baseline update         # accept remaining legacy
@@ -45,10 +48,24 @@ Use `scan_roots[]` in JSON to summarize per-package health.
 ```
 1. jq '.health.refactor_targets[0]' report.json
 2. noslop explain <rule from finding>
-3. Apply fix (delete, wire import, break cycle)
-4. noslop --format json
-5. Repeat until targets empty or user stops
+3. noslop fix --dry-run                 # preview changes
+4. noslop fix                           # apply High-confidence fixes
+5. noslop --format json                 # verify
+6. If broken: noslop fix restore        # or git checkout -- .
+7. Repeat until targets empty or user stops
 ```
+
+Manual edits still valid for cycles, Medium/Low findings, and cases fix skips.
+
+## Watch during active development
+
+```bash
+noslop watch                      # re-scan on every save
+noslop dead --watch               # dead-code rules only
+noslop watch --fix --dry-run      # preview fixes after each rescan
+```
+
+Debounce is 300ms. Parse cache keeps rescans fast on large repos.
 
 ## Filtered analysis
 
@@ -81,9 +98,9 @@ Goal:
 Process:
 1. Run noslop --format json. Check schema_version and health.refactor_targets.
 2. If helpful, run noslop init for noslop.toml.
-3. Fix high-confidence findings first: cycles, unused files, unused imports/exports.
-4. For each remaining finding: fix in code (preferred), config rule, or narrow suppression with reason.
-5. Re-run noslop after each batch.
+3. Fix high-confidence findings first: cycles (manual), then `noslop fix --dry-run` → `noslop fix` for dead files/imports/exports.
+4. For each remaining finding: fix in code (preferred), `noslop fix` where High-confidence, config rule, or narrow suppression with reason.
+5. Re-run noslop after each batch. If fix breaks something: `noslop fix restore`.
 6. noslop baseline update, then noslop audit --base main.
 7. Wire noslop audit into CI.
 

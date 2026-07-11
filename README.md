@@ -107,6 +107,29 @@ noslop init                     # writes noslop.toml with detected plugins + ent
 
 Zero-config works out of the box. Config **refines** behavior — it never enables the tool.
 
+### Auto-fix
+
+`noslop fix` applies **High-confidence** changes only by default: deletes unreachable files, removes unused import bindings, strips dead exports. Preview first:
+
+```bash
+noslop fix --dry-run            # unified diff, no writes
+noslop fix                      # apply (saves rollback snapshot first)
+noslop fix restore              # undo the last applied fix
+noslop fix --include-deps       # also remove unused deps (Medium confidence)
+noslop dead --fix --dry-run     # fix after a scoped dead-code scan
+```
+
+Each real `noslop fix` run saves a snapshot to `.noslopcode/fix-rollback.json` before changing anything. If the app breaks, run `noslop fix restore`. In a git repo you can also use `git checkout -- .` or `git stash`.
+
+### Watch mode
+
+```bash
+noslop watch                    # debounced re-scan on save (300ms)
+noslop --watch                  # same, as a global flag
+```
+
+Warm cache means only changed files re-parse; graph + passes rebuild every cycle (milliseconds on typical repos).
+
 ---
 
 ## How to use it effectively
@@ -121,6 +144,9 @@ noslop dead                     # narrow to dead-code rules only
 noslop cycles                   # import cycles only
 noslop deps                     # unused package.json / pyproject dependencies
 noslop dupes                    # duplicate-code clones (force-enables duplication)
+noslop fix --dry-run            # preview auto-fixes (high confidence only)
+noslop fix                      # delete dead files, strip unused imports/exports
+noslop watch                    # re-scan on save (uses parse cache for speed)
 ```
 
 **Workflow:** fix cycles first (they block safe deletion), then dead files, then unused exports/imports, then deps.
@@ -264,8 +290,11 @@ noslop --no-cache                 # cold parse (debugging cache issues)
 | `noslop baseline update`    | Snapshot current findings as accepted legacy              |
 | `noslop explain <rule>`     | What a rule means, why it fires, how to suppress          |
 | `noslop init`               | Write `noslop.toml` with detected plugins                 |
+| `noslop fix`                | Auto-delete dead files, strip unused imports/exports      |
+| `noslop fix restore`        | Undo the last applied fix (from rollback snapshot)        |
+| `noslop watch`              | Re-scan on file save (debounced, cache-warm)              |
 
-**Global flags:** `--root <path>` · `--format pretty\|json\|sarif\|github` · `--all` · `--filter <rule,...>` · `--threads N` · `--no-cache`
+**Global flags:** `--root <path>` · `--format pretty\|json\|sarif\|github` · `--all` · `--filter <rule,...>` · `--threads N` · `--no-cache` · `--fix` · `--dry-run` · `--include-deps` · `--watch`
 
 ---
 

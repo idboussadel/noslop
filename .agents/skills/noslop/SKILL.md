@@ -1,8 +1,8 @@
 ---
 name: noslop
-description: Polyglot dead-code and health analysis for TypeScript, JavaScript, and Python. Finds unused files, exports, imports, dependencies, cycles, complexity, and duplication. Use when asked to find dead code, audit a PR, set up CI ratchet, explain a noslop finding, run noslop, or clean up a monorepo with mixed TS and Python.
+description: Polyglot dead-code and health analysis for TypeScript, JavaScript, and Python. Finds unused files, exports, imports, dependencies, cycles, complexity, and duplication. Use when asked to find dead code, audit a PR, set up CI ratchet, explain a noslop finding, run noslop, auto-fix dead code, watch for changes, or clean up a monorepo with mixed TS and Python.
 metadata:
-  version: 1.0.0
+  version: 1.1.0
   noslop_version: 0.1.0
   schema_version: 1
   homepage: https://github.com/noslopcode/noslopcode
@@ -18,6 +18,8 @@ Deterministic reachability analysis for **TypeScript/JavaScript and Python**. On
 - Break import cycles before deleting files safely.
 - Audit a PR with the CI ratchet (`noslop audit`) instead of fixing legacy debt in one shot.
 - Read `health.refactor_targets` to prioritize cleanup work.
+- Auto-fix high-confidence dead code (`noslop fix`) or preview with `--dry-run`.
+- Watch the repo and re-scan on save (`noslop watch`).
 - Explain or suppress a specific rule (`noslop explain <rule>`).
 
 ## When NOT to Use
@@ -41,11 +43,12 @@ Zero config works on first run. Optional: `noslop init` writes `noslop.toml` wit
 1. **Always use `--format json`** for machine-readable output. JSON includes all confidence tiers; the pretty terminal view hides Medium/Low unless `--all`.
 2. **Check `schema_version` and `tool_version`** before parsing. Current contract: `schema_version: 1`, `tool_version: 0.1.0`. If `schema_version` differs, read [references/json-schema.md](references/json-schema.md) and repo CHANGELOG.
 3. **Exit code 1 means findings**, not a crash. Exit code 2 is execution error (misconfig, unreadable repo). Never conflate them in CI.
-4. **Prefer High-confidence findings** for auto-fix. Ask a human before acting on `medium` or `low` (e.g. unused dependencies, dynamic imports).
+4. **Prefer High-confidence findings** for auto-fix (`noslop fix`). Use `--dry-run` first. Ask a human before `--include-deps` (Medium-confidence unused dependencies).
 5. **Fix cycles before deleting dead files** — cycles block safe reachability conclusions.
-6. **Suppress narrowly** with rule name + reason, or use `@public` / `@expected-unused` annotations. See [references/gotchas.md](references/gotchas.md).
-7. **Monorepo-aware**: read `scan_roots[]` for per-package context. Use `--root apps/web` to scope a single workspace.
-8. **No `fix` command yet** — remove dead code manually; re-run noslop to verify.
+6. **After `noslop fix`, offer rollback** — `noslop fix restore` (snapshot at `.noslopcode/fix-rollback.json`) or `git checkout -- .` in a git repo.
+7. **Suppress narrowly** with rule name + reason, or use `@public` / `@expected-unused` annotations. See [references/gotchas.md](references/gotchas.md).
+8. **Monorepo-aware**: read `scan_roots[]` for per-package context. Use `--root apps/web` to scope a single workspace.
+9. **`noslop fix` is safe-by-default** — only High-confidence rules unless `--include-deps`. Dry-run never writes or snapshots.
 
 ## Task Cheat Sheet
 
@@ -58,6 +61,11 @@ Zero config works on first run. Optional: `noslop init` writes `noslop.toml` wit
 | Duplication | `noslop dupes --format json` |
 | PR / CI gate | `noslop audit --base main --format json` |
 | Accept legacy debt | `noslop baseline update` |
+| Preview auto-fix | `noslop fix --dry-run` |
+| Apply auto-fix (High only) | `noslop fix` |
+| Undo last fix | `noslop fix restore` |
+| Fix after dead-code scan | `noslop dead --fix --dry-run` |
+| Watch + re-scan on save | `noslop watch` or `noslop --watch` |
 | Debug a rule | `noslop explain unused-export` |
 | Narrow rules | `noslop --format json --filter unused-file,unused-export` |
 | All confidence tiers in terminal | `noslop --all` |
@@ -91,9 +99,22 @@ Baseline file: `.noslopcode/baseline.json` (array of stable keys: `rule|path` or
 ```bash
 noslop --format json | jq '.health.refactor_targets[:3]'
 noslop dead --format json
+noslop fix --dry-run              # preview: deletes, import strips, export removal
+noslop fix                      # apply High-confidence fixes (saves rollback snapshot)
 ```
 
 Work order: cycles → dead files → unused exports/imports → deps.
+
+If `noslop fix` breaks the app: `noslop fix restore` or `git checkout -- .`.
+
+### Daily driver (watch)
+
+```bash
+noslop watch                    # debounced re-scan on save (300ms)
+noslop watch --fix --dry-run    # watch + preview fixes each cycle
+```
+
+Uses the parse cache — only changed files re-extract; graph + passes rebuild each cycle.
 
 ### CI (GitHub Actions)
 
@@ -106,7 +127,7 @@ noslop audit --base origin/main --format github
 
 1. `noslop --format json` — understand scope.
 2. `noslop init` if config helps (optional).
-3. Fix high-confidence issues in batches; re-run after each batch.
+3. Fix high-confidence issues in batches (`noslop fix --dry-run` then `noslop fix`, or manual edits); re-run after each batch.
 4. `noslop baseline update` — accept remaining legacy.
 5. Wire `noslop audit` into CI.
 

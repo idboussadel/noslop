@@ -145,7 +145,7 @@ fn is_tooling_config(name_lower: &str) -> bool {
 /// A 1-based, inclusive line range within a file. Line-level is deliberately
 /// coarse: findings are attributed to symbols by their stable id, and spans are
 /// only for human display, so byte offsets would be needless churn.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct Span {
     pub start_line: u32,
     pub end_line: u32,

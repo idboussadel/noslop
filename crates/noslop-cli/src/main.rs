@@ -2,7 +2,9 @@
 //! output selection, and exit codes. All real work lives in `noslop-core`.
 
 mod explain;
+mod fix_cmd;
 mod init;
+mod watch;
 
 use clap::{Parser, Subcommand, ValueEnum};
 use noslop_core::{scan, ScanOptions};
@@ -16,7 +18,7 @@ use std::process::ExitCode;
 /// TypeScript and Python.
 #[derive(Parser)]
 #[command(name = "noslop", version, about)]
-struct Cli {
+pub(crate) struct Cli {
     #[command(subcommand)]
     command: Option<Command>,
 
@@ -25,7 +27,7 @@ struct Cli {
 }
 
 #[derive(clap::Args)]
-struct GlobalArgs {
+pub(crate) struct GlobalArgs {
     /// Repository root to scan.
     #[arg(long, global = true, default_value = ".")]
     root: PathBuf,
@@ -44,6 +46,18 @@ struct GlobalArgs {
     /// Bypass the on-disk parse cache.
     #[arg(long, global = true)]
     no_cache: bool,
+    /// Apply high-confidence auto-fixes after the scan.
+    #[arg(long, global = true)]
+    fix: bool,
+    /// Preview fixes without writing (use with `--fix` or `noslop fix`).
+    #[arg(long, global = true)]
+    dry_run: bool,
+    /// Also remove unused dependencies (Medium confidence; use with `--fix`).
+    #[arg(long, global = true)]
+    include_deps: bool,
+    /// Re-scan when files change (debounced).
+    #[arg(long, global = true)]
+    watch: bool,
 }
 
 #[derive(Copy, Clone, ValueEnum)]
@@ -55,7 +69,7 @@ enum Format {
 }
 
 #[derive(Subcommand)]
-enum Command {
+pub(crate) enum Command {
     /// Dead-code findings only (files, exports, imports, test-only).
     Dead,
     /// Circular import groups.
@@ -82,6 +96,25 @@ enum Command {
     },
     /// Generate a noslop.toml annotated with detected plugins and entry points.
     Init,
+    /// Auto-delete dead files, strip unused imports/exports, remove unused deps.
+    Fix {
+        #[command(subcommand)]
+        action: Option<FixAction>,
+        /// Preview changes without writing.
+        #[arg(long)]
+        dry_run: bool,
+        /// Also remove unused dependencies (Medium confidence).
+        #[arg(long)]
+        include_deps: bool,
+    },
+    /// Re-scan on file save (same as `--watch`).
+    Watch,
+}
+
+#[derive(Subcommand)]
+enum FixAction {
+    /// Undo the last `noslop fix` run (restores `.noslopcode/fix-rollback.json`).
+    Restore,
 }
 
 #[derive(Subcommand)]
@@ -98,16 +131,25 @@ fn main() -> ExitCode {
         Ok(code) => code,
         Err(err) => {
             eprintln!("noslop: error: {err:#}");
-            // Exit 2 is reserved for execution errors and must never be conflated
-            // with "findings present" (exit 1) — CI depends on the distinction.
             ExitCode::from(2)
         }
     }
 }
 
 fn run(cli: Cli) -> anyhow::Result<ExitCode> {
-    // Commands that do not need a scan.
+    if matches!(cli.command, Some(Command::Watch)) || cli.global.watch {
+        watch::run(&cli)?;
+        return Ok(ExitCode::SUCCESS);
+    }
+
     match &cli.command {
+        Some(Command::Fix {
+            action: Some(FixAction::Restore),
+            ..
+        }) => {
+            fix_cmd::run_restore(&cli.global.root)?;
+            return Ok(ExitCode::SUCCESS);
+        }
         Some(Command::Explain { rule }) => {
             println!("{}", explain::explain(rule));
             return Ok(ExitCode::SUCCESS);
@@ -133,9 +175,8 @@ fn run(cli: Cli) -> anyhow::Result<ExitCode> {
     }
 
     let fail_on = noslop_core::fail_on(&cli.global.root);
-
-    // `audit` / `baseline` apply the ratchet semantics.
     let root = cli.global.root.clone();
+
     match &cli.command {
         Some(Command::Baseline {
             action: BaselineAction::Update,
@@ -157,15 +198,43 @@ fn run(cli: Cli) -> anyhow::Result<ExitCode> {
             );
             return Ok(exit_for(&report, fail_on));
         }
+        Some(Command::Fix {
+            action: None,
+            dry_run,
+            include_deps,
+        }) => {
+            fix_cmd::run_fix(
+                &root,
+                &report.findings,
+                &outcome.facts,
+                &fix_cmd::FixRunOptions {
+                    dry_run: *dry_run,
+                    include_deps: *include_deps,
+                },
+            )?;
+            return Ok(ExitCode::SUCCESS);
+        }
         _ => {}
     }
 
     emit(&report, &cli.global, outcome.elapsed_ms, outcome.warm_cache);
+
+    if cli.global.fix {
+        fix_cmd::run_fix(
+            &root,
+            &report.findings,
+            &outcome.facts,
+            &fix_cmd::FixRunOptions {
+                dry_run: cli.global.dry_run,
+                include_deps: cli.global.include_deps,
+            },
+        )?;
+    }
+
     Ok(exit_for(&report, fail_on))
 }
 
-/// Render the report in the selected format to stdout.
-fn emit(report: &Report, global: &GlobalArgs, elapsed_ms: u128, warm_cache: bool) {
+pub(crate) fn emit(report: &Report, global: &GlobalArgs, elapsed_ms: u128, warm_cache: bool) {
     match global.format {
         Format::Pretty => {
             print!("{}", report.to_pretty(global.all, elapsed_ms, warm_cache))
@@ -176,12 +245,11 @@ fn emit(report: &Report, global: &GlobalArgs, elapsed_ms: u128, warm_cache: bool
     }
 }
 
-fn exit_for(report: &Report, fail_on: Severity) -> ExitCode {
+pub(crate) fn exit_for(report: &Report, fail_on: Severity) -> ExitCode {
     ExitCode::from(report.exit_code(fail_on) as u8)
 }
 
-/// Determine which rules to keep, from the subcommand and `--filter`.
-fn rule_filter(
+pub(crate) fn rule_filter(
     command: &Option<Command>,
     filter: &[String],
 ) -> anyhow::Result<Option<Vec<RuleId>>> {
@@ -195,6 +263,13 @@ fn rule_filter(
         Some(Command::Cycles) => Some(vec![RuleId::CircularImports]),
         Some(Command::Deps) => Some(vec![RuleId::UnusedDependency]),
         Some(Command::Dupes) => Some(vec![RuleId::DuplicateCode]),
+        Some(Command::Fix { .. }) => Some(vec![
+            RuleId::UnusedFile,
+            RuleId::UnusedExport,
+            RuleId::UnusedType,
+            RuleId::UnusedImport,
+            RuleId::UnusedDependency,
+        ]),
         _ => None,
     };
 

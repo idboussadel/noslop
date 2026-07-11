@@ -33,6 +33,8 @@ pub struct ScanOptions {
 /// The result of a scan: the report plus presentation metadata.
 pub struct ScanOutcome {
     pub report: Report,
+    /// Per-file facts from extraction — needed by `noslop fix`.
+    pub facts: Vec<FileFacts>,
     pub elapsed_ms: u128,
     pub warm_cache: bool,
 }
@@ -104,6 +106,7 @@ pub fn scan(opts: &ScanOptions) -> anyhow::Result<ScanOutcome> {
 
     Ok(ScanOutcome {
         report,
+        facts,
         elapsed_ms: start.elapsed().as_millis(),
         warm_cache: opts.use_cache && cache.was_loaded(),
     })

@@ -68,11 +68,23 @@ When `require-suppression-reason` is enabled, bare suppressions become `missing-
 
 **Correct:** `noslop baseline update` once, then `noslop audit --base main` to gate **new** findings only.
 
-## No auto-fix yet
+## Auto-fix without dry-run
 
-**Wrong:** Look for `noslop fix` or `--apply` (Fallow has this; noslop does not yet).
+**Wrong:** Run `noslop fix` on a large legacy repo without previewing, then assume rollback covers multiple fix runs.
 
-**Correct:** Edit source manually, then re-run `noslop` or `noslop dead --format json` to verify.
+**Correct:** Always `noslop fix --dry-run` first. Each `noslop fix` overwrites the single rollback snapshot — only the **last** fix run is undoable via `noslop fix restore`. Use git for multi-step history.
+
+## Applying fix to Medium-confidence deps
+
+**Wrong:** `noslop fix --include-deps` and remove every `unused-dependency` blindly.
+
+**Correct:** `--include-deps` is opt-in because `unused-dependency` is Medium confidence. Verify dynamic imports and tooling-only packages first.
+
+## No auto-fix for cycles
+
+**Wrong:** Expect `noslop fix` to break import cycles.
+
+**Correct:** Fix `circular-imports` manually first. Auto-fix handles dead files, imports, exports, and optionally deps — not cycles.
 
 ## Duplication not in default full scan config
 
