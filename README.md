@@ -1,6 +1,6 @@
 <div align="center">
 
-<div style="margin-bottom: 28px">
+<div style="margin-bottom: 36px">
   <img src="assets/logo.webp" alt="no slop" width="300" />
 </div>
 
@@ -314,15 +314,15 @@ Disable: `[complexity] enabled = false` in `noslop.toml`.
 
 **122 built-in plugins** — parity with [Fallow's built-in frameworks](https://docs.fallow.tools/frameworks/built-in), plus Python stacks noslop adds on top:
 
-| Category | Examples |
-| -------- | -------- |
-| Frameworks | Next.js, Nuxt, Remix, SvelteKit, Astro, Angular, React Router, TanStack Router, NestJS, Electron, Expo |
-| Bundlers | Vite, Webpack, Rspack, Rollup, Tsup, Parcel |
-| Testing | Vitest, Jest, Playwright, Cypress, Storybook, Cucumber |
-| Lint / format | ESLint, Biome, Prettier, Stylelint, Oxlint |
-| CSS / DB | Tailwind, PostCSS, UnoCSS, Prisma, Drizzle, TypeORM |
-| Monorepo / CI | Turborepo, Nx, pnpm, Wrangler, Husky, semantic-release |
-| Python (noslop) | FastAPI, Django, Flask, Celery, pytest, Click, Typer, Gunicorn, Uvicorn |
+| Category        | Examples                                                                                               |
+| --------------- | ------------------------------------------------------------------------------------------------------ |
+| Frameworks      | Next.js, Nuxt, Remix, SvelteKit, Astro, Angular, React Router, TanStack Router, NestJS, Electron, Expo |
+| Bundlers        | Vite, Webpack, Rspack, Rollup, Tsup, Parcel                                                            |
+| Testing         | Vitest, Jest, Playwright, Cypress, Storybook, Cucumber                                                 |
+| Lint / format   | ESLint, Biome, Prettier, Stylelint, Oxlint                                                             |
+| CSS / DB        | Tailwind, PostCSS, UnoCSS, Prisma, Drizzle, TypeORM                                                    |
+| Monorepo / CI   | Turborepo, Nx, pnpm, Wrangler, Husky, semantic-release                                                 |
+| Python (noslop) | FastAPI, Django, Flask, Celery, pytest, Click, Typer, Gunicorn, Uvicorn                                |
 
 Plugins auto-activate from `package.json` dependencies or config files (e.g. ESLint/Vitest configs without the package in a workspace). Regenerate from upstream Fallow sources with `python3 scripts/generate_fallow_plugins.py`.
 
