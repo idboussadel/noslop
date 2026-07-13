@@ -19,6 +19,9 @@
 
 ---
 
+https://github.com/user-attachments/assets/44a88678-e0d1-493c-9127-d07d61d11f82
+
+
 ## What it does
 
 `noslop` walks your repo — **monorepos and workspaces included** — builds an import graph across **TypeScript/JavaScript and Python**, and tells you what is actually dead: files nobody reaches, exports nobody imports, dependencies nobody uses, cycles that will bite you later.
