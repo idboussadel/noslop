@@ -3,6 +3,7 @@
 
 mod explain;
 mod fix_cmd;
+mod graph_cmd;
 mod init;
 mod watch;
 
@@ -60,12 +61,20 @@ pub(crate) struct GlobalArgs {
     watch: bool,
 }
 
-#[derive(Copy, Clone, ValueEnum)]
-enum Format {
+#[derive(Copy, Clone, PartialEq, Eq, ValueEnum)]
+pub(crate) enum Format {
     Pretty,
     Json,
     Sarif,
     Github,
+    /// Graphviz DOT — only meaningful for `noslop graph`.
+    Dot,
+    /// Mermaid flowchart — only meaningful for `noslop graph`.
+    Mermaid,
+    /// Standalone SVG — only meaningful for `noslop graph`.
+    Svg,
+    /// Self-contained HTML page — only meaningful for `noslop graph`.
+    Html,
 }
 
 #[derive(Subcommand)]
@@ -109,6 +118,11 @@ pub(crate) enum Command {
     },
     /// Re-scan on file save (same as `--watch`).
     Watch,
+    /// Render repository graphs (package import graph, …).
+    Graph {
+        #[command(subcommand)]
+        which: graph_cmd::GraphKind,
+    },
 }
 
 #[derive(Subcommand)]
@@ -167,6 +181,12 @@ fn run(cli: Cli) -> anyhow::Result<ExitCode> {
         threads: cli.global.threads,
         force_duplication: matches!(cli.command, Some(Command::Dupes)),
     })?;
+
+    if let Some(Command::Graph { which }) = &cli.command {
+        graph_cmd::run(which, &outcome.graph, &outcome.report.scan_roots, cli.global.format);
+        return Ok(ExitCode::SUCCESS);
+    }
+
     let mut report = outcome.report;
 
     let rules = rule_filter(&cli.command, &cli.global.filter)?;
@@ -242,6 +262,13 @@ pub(crate) fn emit(report: &Report, global: &GlobalArgs, elapsed_ms: u128, warm_
         Format::Json => println!("{}", report.to_json()),
         Format::Sarif => println!("{}", report.to_sarif()),
         Format::Github => print!("{}", report.to_github()),
+        Format::Dot | Format::Mermaid | Format::Svg | Format::Html => {
+            eprintln!(
+                "noslop: --format svg/html is only supported by `noslop graph`; \
+                 showing the pretty report instead."
+            );
+            print!("{}", report.to_pretty(global.all, elapsed_ms, warm_cache))
+        }
     }
 }
 

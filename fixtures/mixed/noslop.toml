@@ -1,0 +1,6 @@
+schema = 1
+
+# Demo fixture: surface complexity findings in recordings without a huge function.
+[complexity]
+max-cyclomatic = 8
+max-cognitive = 10

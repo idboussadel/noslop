@@ -17,6 +17,7 @@ noslop-discover = { path = "crates/noslop-discover" }
 noslop-resolve = { path = "crates/noslop-resolve" }
 noslop-passes = { path = "crates/noslop-passes" }
 noslop-report = { path = "crates/noslop-report" }
+noslop-viz = { path = "crates/noslop-viz" }
 noslop-core = { path = "crates/noslop-core" }
 noslop-fix = { path = "crates/noslop-fix" }
 

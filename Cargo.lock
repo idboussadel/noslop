@@ -405,6 +405,7 @@ dependencies = [
  "noslop-fix",
  "noslop-graph",
  "noslop-report",
+ "noslop-viz",
  "notify",
  "serde_json",
 ]
@@ -489,7 +490,9 @@ name = "noslop-report"
 version = "0.1.0"
 dependencies = [
  "noslop-graph",
+ "noslop-viz",
  "owo-colors",
+ "petgraph",
  "serde",
  "serde_json",
 ]
@@ -499,6 +502,15 @@ name = "noslop-resolve"
 version = "0.1.0"
 dependencies = [
  "noslop-graph",
+]
+
+[[package]]
+name = "noslop-viz"
+version = "0.1.0"
+dependencies = [
+ "owo-colors",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

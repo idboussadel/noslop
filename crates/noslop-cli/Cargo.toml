@@ -12,6 +12,7 @@ path = "src/main.rs"
 noslop-core = { workspace = true }
 noslop-report = { workspace = true }
 noslop-graph = { workspace = true }
+noslop-viz = { workspace = true }
 noslop-discover = { workspace = true }
 noslop-fix = { workspace = true }
 clap = { workspace = true }

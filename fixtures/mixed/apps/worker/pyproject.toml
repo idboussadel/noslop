@@ -1,0 +1,11 @@
+[project]
+name = "acme-worker"
+version = "0.1.0"
+dependencies = [
+    "click>=8",
+    "httpx",
+    "unused-worker-pkg",
+]
+
+[project.scripts]
+run = "worker.main:cli"

@@ -43,25 +43,24 @@ fn fix_dry_run_targets_high_confidence_dead_code() {
     )
     .unwrap();
 
-    assert!(
-        result.diffs.len() >= 4,
+    assert!(result.diffs.len() >= 4,
         "expected file/import/export deletes, got {} diffs",
         result.diffs.len()
     );
-    assert!(result.diffs.iter().any(|d| d.contains("orphan.ts")));
+    assert!(result.diffs.iter().any(|d| d.contains("analytics.ts")));
     assert!(result.diffs.iter().any(|d| d.contains("unusedName")));
     assert!(result.diffs.iter().any(|d| d.contains("formatDead")));
 
     // Dry run must not touch the tree.
-    assert!(tmp.path().join("apps/web/src/lib/orphan.ts").exists());
+    assert!(tmp.path().join("apps/web/src/lib/analytics.ts").exists());
 }
 
 #[test]
 fn fix_apply_then_restore_round_trip() {
     let tmp = tempfile::tempdir().unwrap();
     copy_dir_all(&fixture_root(), tmp.path());
-    let orphan = tmp.path().join("apps/web/src/lib/orphan.ts");
-    let before = fs::read_to_string(&orphan).unwrap();
+    let analytics = tmp.path().join("apps/web/src/lib/analytics.ts");
+    let before = fs::read_to_string(&analytics).unwrap();
 
     let outcome = scan(&ScanOptions {
         root: tmp.path().to_path_buf(),
@@ -91,11 +90,11 @@ fn fix_apply_then_restore_round_trip() {
     )
     .unwrap();
 
-    assert!(!orphan.exists(), "fix should delete orphan.ts");
+    assert!(!analytics.exists(), "fix should delete analytics.ts");
 
     let restored = noslop_fix::restore(tmp.path()).unwrap();
     assert!(restored >= 1);
-    assert_eq!(fs::read_to_string(&orphan).unwrap(), before);
+    assert_eq!(fs::read_to_string(&analytics).unwrap(), before);
 }
 
 fn copy_dir_all(src: &std::path::Path, dst: &std::path::Path) {

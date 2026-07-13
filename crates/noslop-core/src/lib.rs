@@ -35,6 +35,9 @@ pub struct ScanOutcome {
     pub report: Report,
     /// Per-file facts from extraction — needed by `noslop fix`.
     pub facts: Vec<FileFacts>,
+    /// The resolved graph — needed by the `graph` views. Free to carry: it is
+    /// already built during the scan.
+    pub graph: noslop_graph::Graph,
     pub elapsed_ms: u128,
     pub warm_cache: bool,
 }
@@ -107,6 +110,7 @@ pub fn scan(opts: &ScanOptions) -> anyhow::Result<ScanOutcome> {
     Ok(ScanOutcome {
         report,
         facts,
+        graph,
         elapsed_ms: start.elapsed().as_millis(),
         warm_cache: opts.use_cache && cache.was_loaded(),
     })

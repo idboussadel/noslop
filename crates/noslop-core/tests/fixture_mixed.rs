@@ -58,8 +58,17 @@ fn unused_files_are_exactly_the_orphans() {
     assert_eq!(
         findings_for("unused-file"),
         vec![
+            "apps/api/app/billing/invoice_a.py".to_string(),
+            "apps/api/app/billing/invoice_b.py".to_string(),
             "apps/api/app/dead_tool.py".to_string(),
+            "apps/api/app/legacy/spike.py".to_string(),
+            "apps/api/app/middleware/trace.py".to_string(),
+            "apps/web/src/components/DeadWidget.tsx".to_string(),
+            "apps/web/src/hooks/useDebounce.ts".to_string(),
+            "apps/web/src/lib/analytics.ts".to_string(),
             "apps/web/src/lib/orphan.ts".to_string(),
+            "apps/worker/worker/jobs/email.py".to_string(),
+            "packages/shared/src/legacy/orphan.ts".to_string(),
         ]
     );
 }
@@ -70,7 +79,10 @@ fn unused_export_finds_only_the_dead_export() {
     // formatLocalOnly (used in-module) must NOT appear in the high-confidence view.
     assert_eq!(
         findings_for_confidence("unused-export", Confidence::High),
-        vec!["apps/web/src/lib/format.ts::formatDead".to_string()]
+        vec![
+            "apps/web/src/lib/api.ts::apiLabel".to_string(),
+            "apps/web/src/lib/format.ts::formatDead".to_string(),
+        ]
     );
 }
 
@@ -89,7 +101,7 @@ fn unused_import_finds_the_unused_binding() {
 }
 
 #[test]
-fn python_cycle_is_detected_as_error() {
+fn python_cycles_are_detected_as_errors() {
     let outcome = scan(&ScanOptions {
         root: fixture_root(),
         use_cache: false,
@@ -97,15 +109,20 @@ fn python_cycle_is_detected_as_error() {
         ..Default::default()
     })
     .unwrap();
-    let cycle = outcome
+    let cycles: Vec<_> = outcome
         .report
         .findings
         .iter()
-        .find(|f| f.rule.as_str() == "circular-imports")
-        .expect("cycle should be found");
-    assert_eq!(cycle.severity, noslop_graph::Severity::Error);
-    assert!(cycle.message.contains("cycle_a.py"));
-    assert!(cycle.message.contains("cycle_b.py"));
+        .filter(|f| f.rule.as_str() == "circular-imports")
+        .collect();
+    assert_eq!(cycles.len(), 2);
+    assert!(cycles
+        .iter()
+        .any(|c| c.message.contains("cycle_a.py") && c.message.contains("cycle_b.py")));
+    assert!(cycles
+        .iter()
+        .any(|c| c.message.contains("invoice_a.py") && c.message.contains("invoice_b.py")));
+    assert!(cycles.iter().all(|c| c.severity == noslop_graph::Severity::Error));
 }
 
 #[test]
@@ -113,9 +130,8 @@ fn framework_dep_not_flagged_but_orphan_deps_are() {
     let deps = findings_for("unused-dependency");
     assert!(deps
         .iter()
-        .all(|d| !d.contains("next") && !d.contains("fastapi")));
-    // The two genuinely-unused deps are reported (at the manifest path).
-    assert_eq!(deps.len(), 2);
+        .all(|d| !d.contains("next") && !d.contains("fastapi") && !d.contains("click")));
+    assert_eq!(deps.len(), 4);
 }
 
 #[test]

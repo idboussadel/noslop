@@ -1,13 +1,10 @@
 [package]
-name = "noslop-report"
+name = "noslop-viz"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 
 [dependencies]
-noslop-graph = { workspace = true }
-noslop-viz = { workspace = true }
-petgraph = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 owo-colors = { workspace = true }

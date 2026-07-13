@@ -293,8 +293,50 @@ noslop --no-cache                 # cold parse (debugging cache issues)
 | `noslop fix`                | Auto-delete dead files, strip unused imports/exports      |
 | `noslop fix restore`        | Undo the last applied fix (from rollback snapshot)        |
 | `noslop watch`              | Re-scan on file save (debounced, cache-warm)              |
+| `noslop graph packages`     | Render the package/workspace import graph                 |
 
 **Global flags:** `--root <path>` · `--format pretty\|json\|sarif\|github` · `--all` · `--filter <rule,...>` · `--threads N` · `--no-cache` · `--fix` · `--dry-run` · `--include-deps` · `--watch`
+
+---
+
+## Graphs
+
+Visualize the import structure right in the terminal — no Graphviz, no network, deterministic output you can snapshot in CI.
+
+```bash
+noslop graph packages                       # boxed, layered import graph
+noslop graph packages --layout tree         # indented tree (great for wide repos)
+noslop graph packages --ascii               # ASCII-only glyphs (no Unicode box-drawing)
+noslop graph packages --format json         # the graph as data (nodes/edges/cycles)
+noslop graph packages --format mermaid      # paste into Markdown / docs
+noslop graph packages --format dot          # pipe to Graphviz for a rendered image
+```
+
+```
+  PACKAGE GRAPH
+  3 package(s) · 4 edge(s) · 2 in cycles
+
+┌─────────┐
+│   app   │
+│ 1 files │
+└────┬────┘
+     ▲─────┬──┐
+     ▼─────┤  │
+┌────┴────┐│  │
+│  core   ││  │
+│ 1 files ││  │
+└────┬────┘│  │
+     └─────┼──┘
+     ▼─────┘
+┌────┴────┐
+│  util   │
+│ 1 files │
+└─────────┘
+
+  ── import      ↺ cycle
+```
+
+Nodes are packages (sized by file count), solid edges are imports, and packages in an import cycle are highlighted (`↺`, red in color terminals). The boxed layout automatically falls back to the `tree` layout when it would exceed your terminal width. `--format json` is the stable contract (`nodes[]`, `edges[]` with weights, `cycles[]`).
 
 ---
 

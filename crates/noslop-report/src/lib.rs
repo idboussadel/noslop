@@ -3,11 +3,13 @@
 //! exit-code policy (ARCHITECTURE.md §10). Findings are sorted deterministically
 //! here so identical input yields byte-identical output.
 
+mod graphs;
 mod health;
 mod metrics;
 mod pretty;
 mod sarif;
 
+pub use graphs::{build_import_graph, build_package_graph, ImportGraphOptions};
 pub use health::{HealthComponent, HealthReport, RefactorTarget};
 pub use metrics::Metrics;
 
